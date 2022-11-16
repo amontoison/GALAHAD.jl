@@ -1,0 +1,198 @@
+mutable struct sls_control_type
+    f_indexing::Bool
+    error::Cint
+    warning::Cint
+    out::Cint
+    statistics::Cint
+    print_level::Cint
+    print_level_solver::Cint
+    bits::Cint
+    block_size_kernel::Cint
+    block_size_elimination::Cint
+    blas_block_size_factorize::Cint
+    blas_block_size_solve::Cint
+    node_amalgamation::Cint
+    initial_pool_size::Cint
+    min_real_factor_size::Cint
+    min_integer_factor_size::Cint
+    max_real_factor_size::Clong
+    max_integer_factor_size::Clong
+    max_in_core_store::Clong
+    array_increase_factor::Float64
+    array_decrease_factor::Float64
+    pivot_control::Cint
+    ordering::Cint
+    full_row_threshold::Cint
+    row_search_indefinite::Cint
+    scaling::Cint
+    scale_maxit::Cint
+    scale_thresh::Float64
+    relative_pivot_tolerance::Float64
+    minimum_pivot_tolerance::Float64
+    absolute_pivot_tolerance::Float64
+    zero_tolerance::Float64
+    zero_pivot_tolerance::Float64
+    negative_pivot_tolerance::Float64
+    static_pivot_tolerance::Float64
+    static_level_switch::Float64
+    consistency_tolerance::Float64
+    max_iterative_refinements::Cint
+    acceptable_residual_relative::Float64
+    acceptable_residual_absolute::Float64
+    multiple_rhs::Bool
+    generate_matrix_file::Bool
+    matrix_file_device::Cint
+    matrix_file_name::NTuple{31,Cchar}
+    out_of_core_directory::NTuple{401,Cchar}
+    out_of_core_integer_factor_file::NTuple{401,Cchar}
+    out_of_core_real_factor_file::NTuple{401,Cchar}
+    out_of_core_real_work_file::NTuple{401,Cchar}
+    out_of_core_indefinite_file::NTuple{401,Cchar}
+    out_of_core_restart_file::NTuple{501,Cchar}
+    prefix::NTuple{31,Cchar}
+end
+
+mutable struct sls_time_type
+    total::Float64
+    analyse::Float64
+    factorize::Float64
+    solve::Float64
+    order_external::Float64
+    analyse_external::Float64
+    factorize_external::Float64
+    solve_external::Float64
+    clock_total::Float64
+    clock_analyse::Float64
+    clock_factorize::Float64
+    clock_solve::Float64
+    clock_order_external::Float64
+    clock_analyse_external::Float64
+    clock_factorize_external::Float64
+    clock_solve_external::Float64
+end
+
+mutable struct sls_inform_type
+    status::Cint
+    alloc_status::Cint
+    bad_alloc::NTuple{81,Cchar}
+    more_info::Cint
+    entries::Cint
+    out_of_range::Cint
+    duplicates::Cint
+    upper::Cint
+    missing_diagonals::Cint
+    max_depth_assembly_tree::Cint
+    nodes_assembly_tree::Cint
+    real_size_desirable::Clong
+    integer_size_desirable::Clong
+    real_size_necessary::Clong
+    integer_size_necessary::Clong
+    real_size_factors::Clong
+    integer_size_factors::Clong
+    entries_in_factors::Clong
+    max_task_pool_size::Cint
+    max_front_size::Cint
+    compresses_real::Cint
+    compresses_integer::Cint
+    two_by_two_pivots::Cint
+    semi_bandwidth::Cint
+    delayed_pivots::Cint
+    pivot_sign_changes::Cint
+    static_pivots::Cint
+    first_modified_pivot::Cint
+    rank::Cint
+    negative_eigenvalues::Cint
+    num_zero::Cint
+    iterative_refinements::Cint
+    flops_assembly::Clong
+    flops_elimination::Clong
+    flops_blas::Clong
+    largest_modified_pivot::Float64
+    minimum_scaling_factor::Float64
+    maximum_scaling_factor::Float64
+    condition_number_1::Float64
+    condition_number_2::Float64
+    backward_error_1::Float64
+    backward_error_2::Float64
+    forward_error::Float64
+    alternative::Bool
+    time::sls_time_type
+    sils_ainfo::sils_ainfo_type
+    sils_finfo::sils_finfo_type
+    sils_sinfo::sils_sinfo_type
+    ma57_ainfo::ma57_ainfo
+    ma57_finfo::ma57_finfo
+    ma57_sinfo::ma57_sinfo
+    ma77_inform::ma77_info
+    ma86_inform::ma86_info
+    ma87_inform::ma87_info
+    ma97_inform::ma97_info
+    ssids_inform::spral_ssids_inform
+    mc61_info::NTuple{10,Cint}
+    mc61_rinfo::NTuple{15,Float64}
+    mc64_inform::mc64_info
+    mc68_inform::mc68_info
+    mc77_info::NTuple{10,Cint}
+    mc77_rinfo::NTuple{10,Float64}
+    pardiso_error::Cint
+    pardiso_IPARM::NTuple{64,Cint}
+    pardiso_DPARM::NTuple{64,Float64}
+    mkl_pardiso_error::Cint
+    mkl_pardiso_IPARM::NTuple{64,Cint}
+    wsmp_error::Cint
+    wsmp_iparm::NTuple{64,Cint}
+    wsmp_dparm::NTuple{64,Float64}
+    lapack_error::Cint
+end
+
+function sls_initialize(solver, data, control, status)
+    @ccall libgalahad_all.sls_initialize(solver::Ptr{Cchar}, data::Ptr{Ptr{Cvoid}},
+                                         control::Ptr{sls_control_type},
+                                         status::Ptr{Cint})::Cvoid
+end
+
+function sls_read_specfile(control, specfile)
+    @ccall libgalahad_all.sls_read_specfile(control::Ptr{sls_control_type},
+                                            specfile::Ptr{Cchar})::Cvoid
+end
+
+function sls_analyse_matrix(control, data, status, n, type, ne, row, col, ptr)
+    @ccall libgalahad_all.sls_analyse_matrix(control::Ptr{sls_control_type},
+                                             data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                             n::Cint, type::Ptr{Cchar}, ne::Cint,
+                                             row::Ptr{Cint}, col::Ptr{Cint},
+                                             ptr::Ptr{Cint})::Cvoid
+end
+
+function sls_reset_control(control, data, status)
+    @ccall libgalahad_all.sls_reset_control(control::Ptr{sls_control_type},
+                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+end
+
+function sls_factorize_matrix(data, status, ne, val)
+    @ccall libgalahad_all.sls_factorize_matrix(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                               ne::Cint, val::Ptr{Float64})::Cvoid
+end
+
+function sls_solve_system(data, status, n, sol)
+    @ccall libgalahad_all.sls_solve_system(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                           n::Cint, sol::Ptr{Float64})::Cvoid
+end
+
+function sls_partial_solve_system(part, data, status, n, sol)
+    @ccall libgalahad_all.sls_partial_solve_system(part::Ptr{Cchar}, data::Ptr{Ptr{Cvoid}},
+                                                   status::Ptr{Cint}, n::Cint,
+                                                   sol::Ptr{Float64})::Cvoid
+end
+
+function sls_information(data, inform, status)
+    @ccall libgalahad_all.sls_information(data::Ptr{Ptr{Cvoid}},
+                                          inform::Ptr{sls_inform_type},
+                                          status::Ptr{Cint})::Cvoid
+end
+
+function sls_terminate(data, control, inform)
+    @ccall libgalahad_all.sls_terminate(data::Ptr{Ptr{Cvoid}},
+                                        control::Ptr{sls_control_type},
+                                        inform::Ptr{sls_inform_type})::Cvoid
+end
