@@ -55,7 +55,7 @@ mutable struct trs_inform_type
     status::Cint
     alloc_status::Cint
     factorizations::Cint
-    max_entries_factors::Cint
+    max_entries_factors::Int64
     len_history::Cint
     obj::Float64
     x_norm::Float64

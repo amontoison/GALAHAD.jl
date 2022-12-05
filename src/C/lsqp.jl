@@ -78,8 +78,8 @@ mutable struct lsqp_inform_type
     bad_alloc::NTuple{81,Cchar}
     iter::Cint
     factorization_status::Cint
-    factorization_integer::Cint
-    factorization_real::Cint
+    factorization_integer::Int64
+    factorization_real::Int64
     nfacts::Cint
     nbacts::Cint
     obj::Float64

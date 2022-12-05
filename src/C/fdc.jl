@@ -33,8 +33,8 @@ mutable struct fdc_inform_type
     alloc_status::Cint
     bad_alloc::NTuple{81,Cchar}
     factorization_status::Cint
-    factorization_integer::Cint
-    factorization_real::Cint
+    factorization_integer::Int64
+    factorization_real::Int64
     non_negligible_pivot::Float64
     time::fdc_time_type
     sls_inform::sls_inform_type

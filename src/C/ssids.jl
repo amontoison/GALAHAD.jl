@@ -8,11 +8,11 @@ mutable struct spral_ssids_options
     nemin::Cint
     ignore_numa::Bool
     use_gpu::Bool
-    min_gpu_work::Clong
+    min_gpu_work::Int64
     max_load_inbalance::Cfloat
     gpu_perf_coeff::Cfloat
     scaling::Cint
-    small_subtree_threshold::Clong
+    small_subtree_threshold::Int64
     cpu_block_size::Cint
     action::Bool
     pivot_method::Cint
@@ -30,8 +30,8 @@ mutable struct spral_ssids_inform
     maxdepth::Cint
     maxfront::Cint
     num_delay::Cint
-    num_factor::Clong
-    num_flops::Clong
+    num_factor::Int64
+    num_flops::Int64
     num_neg::Cint
     num_sup::Cint
     num_two::Cint
@@ -47,7 +47,7 @@ end
 
 function spral_ssids_analyse(check, n, order, ptr, row, val, akeep, options, inform)
     @ccall libgalahad_all.spral_ssids_analyse(check::Bool, n::Cint, order::Ptr{Cint},
-                                              ptr::Ptr{Clong}, row::Ptr{Cint},
+                                              ptr::Ptr{Int64}, row::Ptr{Cint},
                                               val::Ptr{Float64}, akeep::Ptr{Ptr{Cvoid}},
                                               options::Ptr{spral_ssids_options},
                                               inform::Ptr{spral_ssids_inform})::Cvoid
@@ -63,7 +63,7 @@ function spral_ssids_analyse_ptr32(check, n, order, ptr, row, val, akeep, option
 end
 
 function spral_ssids_analyse_coord(n, order, ne, row, col, val, akeep, options, inform)
-    @ccall libgalahad_all.spral_ssids_analyse_coord(n::Cint, order::Ptr{Cint}, ne::Clong,
+    @ccall libgalahad_all.spral_ssids_analyse_coord(n::Cint, order::Ptr{Cint}, ne::Int64,
                                                     row::Ptr{Cint}, col::Ptr{Cint},
                                                     val::Ptr{Float64},
                                                     akeep::Ptr{Ptr{Cvoid}},
@@ -72,7 +72,7 @@ function spral_ssids_analyse_coord(n, order, ne, row, col, val, akeep, options, 
 end
 
 function spral_ssids_factor(posdef, ptr, row, val, scale, akeep, fkeep, options, inform)
-    @ccall libgalahad_all.spral_ssids_factor(posdef::Bool, ptr::Ptr{Clong}, row::Ptr{Cint},
+    @ccall libgalahad_all.spral_ssids_factor(posdef::Bool, ptr::Ptr{Int64}, row::Ptr{Cint},
                                              val::Ptr{Float64}, scale::Ptr{Float64},
                                              akeep::Ptr{Cvoid}, fkeep::Ptr{Ptr{Cvoid}},
                                              options::Ptr{spral_ssids_options},

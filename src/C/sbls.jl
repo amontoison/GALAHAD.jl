@@ -67,8 +67,8 @@ mutable struct sbls_inform_type
     uls_factorize_status::Cint
     uls_solve_status::Cint
     sort_status::Cint
-    factorization_integer::Clong
-    factorization_real::Clong
+    factorization_integer::Int64
+    factorization_real::Int64
     preconditioner::Cint
     factorization::Cint
     d_plus::Cint

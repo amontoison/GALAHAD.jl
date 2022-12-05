@@ -80,9 +80,9 @@ mutable struct trb_inform_type
     n_free::Cint
     factorization_max::Cint
     factorization_status::Cint
-    max_entries_factors::Clong
-    factorization_integer::Cint
-    factorization_real::Cint
+    max_entries_factors::Int64
+    factorization_integer::Int64
+    factorization_real::Int64
     obj::Float64
     norm_pg::Float64
     radius::Float64

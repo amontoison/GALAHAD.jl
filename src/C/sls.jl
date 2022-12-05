@@ -15,9 +15,9 @@ mutable struct sls_control_type
     initial_pool_size::Cint
     min_real_factor_size::Cint
     min_integer_factor_size::Cint
-    max_real_factor_size::Clong
-    max_integer_factor_size::Clong
-    max_in_core_store::Clong
+    max_real_factor_size::Int64
+    max_integer_factor_size::Int64
+    max_in_core_store::Int64
     array_increase_factor::Float64
     array_decrease_factor::Float64
     pivot_control::Cint
@@ -83,13 +83,13 @@ mutable struct sls_inform_type
     missing_diagonals::Cint
     max_depth_assembly_tree::Cint
     nodes_assembly_tree::Cint
-    real_size_desirable::Clong
-    integer_size_desirable::Clong
-    real_size_necessary::Clong
-    integer_size_necessary::Clong
-    real_size_factors::Clong
-    integer_size_factors::Clong
-    entries_in_factors::Clong
+    real_size_desirable::Int64
+    integer_size_desirable::Int64
+    real_size_necessary::Int64
+    integer_size_necessary::Int64
+    real_size_factors::Int64
+    integer_size_factors::Int64
+    entries_in_factors::Int64
     max_task_pool_size::Cint
     max_front_size::Cint
     compresses_real::Cint
@@ -104,9 +104,9 @@ mutable struct sls_inform_type
     negative_eigenvalues::Cint
     num_zero::Cint
     iterative_refinements::Cint
-    flops_assembly::Clong
-    flops_elimination::Clong
-    flops_blas::Clong
+    flops_assembly::Int64
+    flops_elimination::Int64
+    flops_blas::Int64
     largest_modified_pivot::Float64
     minimum_scaling_factor::Float64
     maximum_scaling_factor::Float64

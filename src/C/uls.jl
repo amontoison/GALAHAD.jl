@@ -8,7 +8,7 @@ mutable struct uls_control_type
     initial_fill_in_factor::Cint
     min_real_factor_size::Cint
     min_integer_factor_size::Cint
-    max_factor_size::Clong
+    max_factor_size::Int64
     blas_block_size_factorize::Cint
     blas_block_size_solve::Cint
     pivot_control::Cint
@@ -32,12 +32,12 @@ mutable struct uls_inform_type
     alloc_status::Cint
     bad_alloc::NTuple{81,Cchar}
     more_info::Cint
-    out_of_range::Clong
-    duplicates::Clong
-    entries_dropped::Clong
-    workspace_factors::Clong
+    out_of_range::Int64
+    duplicates::Int64
+    entries_dropped::Int64
+    workspace_factors::Int64
     compresses::Cint
-    entries_in_factors::Clong
+    entries_in_factors::Int64
     rank::Cint
     structural_rank::Cint
     pivot_control::Cint
