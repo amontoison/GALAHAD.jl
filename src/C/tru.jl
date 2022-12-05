@@ -74,9 +74,9 @@ mutable struct tru_inform_type
     h_eval::Cint
     factorization_max::Cint
     factorization_status::Cint
-    max_entries_factors::Clong
-    factorization_integer::Cint
-    factorization_real::Cint
+    max_entries_factors::Int64
+    factorization_integer::Int64
+    factorization_real::Int64
     factorization_average::Float64
     obj::Float64
     norm_g::Float64

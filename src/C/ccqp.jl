@@ -83,8 +83,8 @@ mutable struct ccqp_inform_type
     bad_alloc::NTuple{81,Cchar}
     iter::Cint
     factorization_status::Cint
-    factorization_integer::Clong
-    factorization_real::Clong
+    factorization_integer::Int64
+    factorization_real::Int64
     nfacts::Cint
     nbacts::Cint
     threads::Cint

@@ -44,8 +44,8 @@ mutable struct psls_inform_type
     analyse_status::Cint
     factorize_status::Cint
     solve_status::Cint
-    factorization_integer::Cint
-    factorization_real::Cint
+    factorization_integer::Int64
+    factorization_real::Int64
     preconditioner::Cint
     semi_bandwidth::Cint
     reordered_semi_bandwidth::Cint

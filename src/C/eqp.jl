@@ -56,8 +56,8 @@ mutable struct eqp_inform_type
     bad_alloc::NTuple{81,Cchar}
     cg_iter::Cint
     cg_iter_inter::Cint
-    factorization_integer::Cint
-    factorization_real::Cint
+    factorization_integer::Int64
+    factorization_real::Int64
     obj::Float64
     time::eqp_time_type
     fdc_inform::fdc_inform_type

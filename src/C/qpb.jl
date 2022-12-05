@@ -97,8 +97,8 @@ mutable struct qpb_inform_type
     iter::Cint
     cg_iter::Cint
     factorization_status::Cint
-    factorization_integer::Cint
-    factorization_real::Cint
+    factorization_integer::Int64
+    factorization_real::Int64
     nfacts::Cint
     nbacts::Cint
     nmods::Cint
