@@ -46,10 +46,9 @@ end
 
 function main(name::String="all"; optimized::Bool=false)
   galahad = joinpath(ENV["GALAHAD"], "include")
-  # galahad = joinpath("..", "include")
 
   (name == "all" || name == "arc")      && wrapper("arc", ["$galahad/galahad_arc.h"], optimized)
-  (name == "all" || name == "bgo")      && wrapper("bgo", ["$galahad/galahad_bgo.h"], optimized) # @Gnimuc?
+  (name == "all" || name == "bgo")      && wrapper("bgo", ["$galahad/galahad_bgo.h"], optimized)
   (name == "all" || name == "blls")     && wrapper("blls", ["$galahad/galahad_blls.h"], optimized)
   (name == "all" || name == "bqp")      && wrapper("bqp", ["$galahad/galahad_bqp.h"], optimized)
   (name == "all" || name == "bqpb")     && wrapper("bqpb", ["$galahad/galahad_bqpb.h"], optimized)
@@ -70,9 +69,10 @@ function main(name::String="all"; optimized::Bool=false)
   (name == "all" || name == "gltr")     && wrapper("gltr", ["$galahad/galahad_gltr.h"], optimized)
   (name == "all" || name == "hash")     && wrapper("hash", ["$galahad/galahad_hash.h"], optimized)
   (name == "all" || name == "hsl")      && wrapper("hsl", ["$galahad/hsl_ma48.h", "$galahad/hsl_ma57.h", "$galahad/hsl_ma77.h", "$galahad/hsl_ma86.h", "$galahad/hsl_ma87.h", "$galahad/hsl_ma97.h", "$galahad/hsl_mc64.h", "$galahad/hsl_mc68.h", "$galahad/hsl_mi20.h", "$galahad/hsl_mi28.h"], optimized)
+  (name == "all" || name == "icfs")     && wrapper("icfs", ["$galahad/galahad_icfs.h"], optimized)
   (name == "all" || name == "ir")       && wrapper("ir", ["$galahad/galahad_ir.h"], optimized)
   (name == "all" || name == "l2rt")     && wrapper("l2rt", ["$galahad/galahad_l2rt.h"], optimized)
-  (name == "all" || name == "lhs")      && wrapper("lhs", ["$galahad/galahad_lhs.h"], optimized) # @Gnimuc?
+  (name == "all" || name == "lhs")      && wrapper("lhs", ["$galahad/galahad_lhs.h"], optimized)
   (name == "all" || name == "lms")      && wrapper("lms", ["$galahad/galahad_lms.h"], optimized)
   (name == "all" || name == "lpa")      && wrapper("lpa", ["$galahad/galahad_lpa.h"], optimized)
   (name == "all" || name == "lpb")      && wrapper("lpb", ["$galahad/galahad_lpb.h"], optimized)

@@ -32,6 +32,7 @@ The possible values for `library` are:
 - `"gls"`;
 - `"gltr"`;
 - `"hash"`;
+- `"icfs"`;
 - `"ir"`;
 - `"l2rt"`;
 - `"lhs"`;
