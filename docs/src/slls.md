@@ -93,25 +93,21 @@ In preparation.
 To solve a given problem, functions from the slls package must be called
 in the following order:
 
-- slls\_initialize - provide default control parameters and
-set up initial data structures
-- slls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- slls\_initialize - provide default control parameters and set up initial data structures
+- slls\_read\_specfile (optional) - override control values by reading replacement values from a file
 - set up problem data structures and fixed values by caling one of
- - slls\_import - in the case that $A$ is explicitly
+- slls\_import - in the case that $A$ is explicitly
 available
- - slls\_import\_without_a - in the case that only the
+- slls\_import\_without_a - in the case that only the
 effect of applying $A$ and its transpose to a vector is possible
-- slls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- slls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - slls\_solve_given_a - solve the problem using values
+- slls\_solve_given_a - solve the problem using values
 of $A$
- - slls\_solve\_reverse_a_prod - solve the problem by returning
+- slls\_solve\_reverse_a_prod - solve the problem by returning
  to the caller for products of $A$ and its transpose with specified
 vectors
-- slls\_information (optional) - recover information about
-the solution and solution process
+- slls\_information (optional) - recover information about the solution and solution process
 - slls\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

@@ -66,19 +66,15 @@ http://www.cse.clrc.ac.uk/nag/hsl
 To solve a given problem, functions from the uls package must be called
 in the following order:
 
-- uls\_initialize - provide default control parameters and
-set up initial data structures
-- uls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- uls\_initialize - provide default control parameters and set up initial data structures
+- uls\_read\_specfile (optional) - override control values by reading replacement values from a file
 - uls_factorize\_matrix - set up matrix data structures,
  analyse the structure to choose a suitable order for factorization,
  and then factorize the matrix $A$
-- uls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- uls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - uls\_solve_system - solve the linear system of
 equations $Ax=b$ or $A^Tx=b$
-- uls\_information (optional) - recover information about
-the solution and solution process
+- uls\_information (optional) - recover information about the solution and solution process
 - uls\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

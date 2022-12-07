@@ -28,13 +28,10 @@ October 2013, C interface January 2022.
 To solve a given problem, functions from the bsc package must be called
 in the following order:
 
-- bsc\_initialize - provide default control parameters and
-set up initial data structures
-- bsc\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- bsc\_initialize - provide default control parameters and set up initial data structures
+- bsc\_read\_specfile (optional) - override control values by reading replacement values from a file
 - bsc\_import - set up matrix data structures for $A$.
-- bsc\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- bsc\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - bsc_form - form the Schur complement $S$
 - bsc\_information (optional) - recover information about
 the process

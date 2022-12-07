@@ -63,14 +63,14 @@ $p_i = \mbox{pseudo random} \in
 \left\{
 \begin{array}{rl}
 \mbox{[-1,1]} & \mbox{if} \;\; x^l_i < x_{k,i} < x^u_i \\
-\mbox{[0,1]} & \mbox{if} \;\; x_{k,i}= x^l_i \\
-\mbox{[-1,0]} & \mbox{if} \;\;x_{k,i}= x^u_i
+\mbox{[0,1]} & \mbox{if} \;\; x_{k,i} = x^l_i \\
+\mbox{[-1,0]} & \mbox{if} \;\; x_{k,i} = x^u_i
 \end{array}
 \right.
 $
 \n
  ( [-1,1] if x^l_i < x_{k,i} < x^u_i
-p_i = pseudo random in ([0,1] if x_{k,i} = x^l_i
+p_i = pseudo random in ( [0,1] if x_{k,i} = x^l_i
  ( [-1,0] if x_{k,i} = x^u_i
 \n
 for each $1 \leq i \leq n$. An alternative is to
@@ -126,26 +126,16 @@ pp. 2002-1274.
 To solve a given problem, functions from the bgo package must be called
 in the following order:
 
-- bgo\_initialize - provide default control parameters and
-set up initial data structures
-- bgo\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- bgo\_import - set up problem data structures and fixed
-values
-- bgo\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- bgo\_initialize - provide default control parameters and set up initial data structures
+- bgo\_read\_specfile (optional) - override control values by reading replacement values from a file
+- bgo\_import - set up problem data structures and fixed values
+- bgo\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - bgo\_solve\_with\_mat - solve using function calls to
- evaluate function, gradient and Hessian values
- - bgo\_solve\_without\_mat - solve using function calls to
- evaluate function and gradient values and Hessian-vector products
- - bgo\_solve\_reverse\_with\_mat - solve returning to the
- calling program to obtain function, gradient and Hessian values, or
- - bgo\_solve\_reverse\_without\_mat - solve returning to the
- calling prorgram to obtain function and gradient values and
- Hessian-vector products
-- bgo\_information (optional) - recover information about
-the solution and solution process
+- bgo\_solve\_with\_mat - solve using function calls to evaluate function, gradient and Hessian values
+- bgo\_solve\_without\_mat - solve using function calls to evaluate function and gradient values and Hessian-vector products
+- bgo\_solve\_reverse\_with\_mat - solve returning to the calling program to obtain function, gradient and Hessian values, or
+- bgo\_solve\_reverse\_without\_mat - solve returning to the calling prorgram to obtain function and gradient values and Hessian-vector products
+- bgo\_information (optional) - recover information about the solution and solution process
 - bgo\_terminate - deallocate data structures
 
 #  Symmetric matrix storage formats
@@ -155,7 +145,7 @@ presented and stored in a variety of formats. But crucially symmetry
 is exploited by only storing values from the lower triangular part
 (i.e, those entries that lie on or below the leading diagonal).
 
-Both C-style (0 based)and fortran-style (1-based) indexing is allowed.
+Both C-style (0 based) and fortran-style (1-based) indexing is allowed.
 Choose control.f_indexing as false for C style and true for
 fortran style; the discussion below presumes C style, but add 1 to
 indices for the corresponding fortran version.
@@ -167,13 +157,13 @@ by supplying data that is already stored using 1-based indexing.
 
 ## Dense storage format
 
-The matrix $H$ is stored as a compactdense matrix by rows, that is,
+The matrix $H$ is stored as a compact dense matrix by rows, that is,
 the values of the entries of each row in turn are
 stored in order within an appropriate real one-dimensional array.
 Since $H$ is symmetric, only the lower triangular part (that is the part
 $H_{ij}$ for $0 \leq j \leq i \leq n-1$) need be held.
 In this case the lower triangle should be stored by rows, that is
-component $i \ast i / 2 + j$of the storage array H_val
+component $i \ast i / 2 + j$ of the storage array H_val
 will hold the value $H_{ij}$ (and, by symmetry, $H_{ji}$)
 for $0 \leq j \leq i \leq n-1$.
 
@@ -182,7 +172,7 @@ for $0 \leq j \leq i \leq n-1$.
 Only the nonzero entries of the matrices are stored.
 For the $l$-th entry, $0 \leq l \leq ne-1$, of $H$,
 its row index i, column index j
-and value $H_{ij}$, $0 \leq j \leq i \leq n-1$,are stored as
+and value $H_{ij}$, $0 \leq j \leq i \leq n-1$, are stored as
 the $l$-th components of the integer arrays H_row and
 H_col and real array H_val, respectively, while the number of nonzeros
 is recorded as H_ne = $ne$.
@@ -196,7 +186,7 @@ in row i+1. For the i-th row of $H$ the i-th component of the
 integer array H_ptr holds the position of the first entry in this row,
 while H_ptr(n) holds the total number of entries plus one.
 The column indices j, $0 \leq j \leq i$, and values
-$H_{ij}$ of theentries in the i-th row are stored in components
+$H_{ij}$ of the entries in the i-th row are stored in components
 l = H_ptr(i), $\ldots$, H_ptr(i+1)-1 of the
 integer array H_col, and real array H_val, respectively.
 Note that as before only the entries in the lower triangle should be stored.

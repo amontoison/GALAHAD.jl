@@ -93,26 +93,16 @@ SIAM/MPS Series on Optimization.
 To solve a given problem, functions from the dgo package must be called
 in the following order:
 
-- dgo\_initialize - provide default control parameters and
-set up initial data structures
-- dgo\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- dgo\_import - set up problem data structures and fixed
-values
-- dgo\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- dgo\_initialize - provide default control parameters and set up initial data structures
+- dgo\_read\_specfile (optional) - override control values by reading replacement values from a file
+- dgo\_import - set up problem data structures and fixed values
+- dgo\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - dgo\_solve\_with\_mat - solve using function calls to
- evaluate function, gradient and Hessian values
- - dgo\_solve\_without\_mat - solve using function calls to
- evaluate function and gradient values and Hessian-vector products
- - dgo\_solve\_reverse\_with\_mat - solve returning to the
- calling program to obtain function, gradient and Hessian values, or
- - dgo\_solve\_reverse\_without\_mat - solve returning to the
- calling prorgram to obtain function and gradient values and
- Hessian-vector products
-- dgo\_information (optional) - recover information about
-the solution and solution process
+- dgo\_solve\_with\_mat - solve using function calls to evaluate function, gradient and Hessian values
+- dgo\_solve\_without\_mat - solve using function calls to evaluate function and gradient values and Hessian-vector products
+- dgo\_solve\_reverse\_with\_mat - solve returning to the calling program to obtain function, gradient and Hessian values, or
+- dgo\_solve\_reverse\_without\_mat - solve returning to the calling prorgram to obtain function and gradient values and Hessian-vector products
+- dgo\_information (optional) - recover information about the solution and solution process
 - dgo\_terminate - deallocate data structures
 
 #  Symmetric matrix storage formats

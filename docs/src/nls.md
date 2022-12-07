@@ -188,26 +188,16 @@ Computational Optimization and Applications 73(1) (2019) 1–35.
 To solve a given problem, functions from the nls package must be called
 in the following order:
 
-- nls\_initialize - provide default control parameters and
-set up initial data structures
-- nls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- nls\_import - set up problem data structures and fixed
-values
-- nls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- nls\_initialize - provide default control parameters and set up initial data structures
+- nls\_read\_specfile (optional) - override control values by reading replacement values from a file
+- nls\_import - set up problem data structures and fixed values
+- nls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - nls\_solve\_with\_mat - solve using function calls to
- evaluate function, gradient and Hessian values
- - nls\_solve\_without\_mat - solve using function calls to
- evaluate function and gradient values and Hessian-vector products
- - nls\_solve\_reverse\_with\_mat - solve returning to the
- calling program to obtain function, gradient and Hessian values, or
- - nls\_solve\_reverse\_without\_mat - solve returning to the
- calling prorgram to obtain function and gradient values and
- Hessian-vector products
-- nls\_information (optional) - recover information about
-the solution and solution process
+- nls\_solve\_with\_mat - solve using function calls to evaluate function, gradient and Hessian values
+- nls\_solve\_without\_mat - solve using function calls to evaluate function and gradient values and Hessian-vector products
+- nls\_solve\_reverse\_with\_mat - solve returning to the calling program to obtain function, gradient and Hessian values, or
+- nls\_solve\_reverse\_without\_mat - solve returning to the calling prorgram to obtain function and gradient values and Hessian-vector products
+- nls\_information (optional) - recover information about the solution and solution process
 - nls\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

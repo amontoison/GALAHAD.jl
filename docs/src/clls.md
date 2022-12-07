@@ -153,19 +153,14 @@ Mathematical Programming Computation 5(2) 113-142.
 To solve a given problem, functions from the clls package must be called
 in the following order:
 
-- clls\_initialize - provide default control parameters and
-set up initial data structures
-- clls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- clls\_import - set up problem data structures and fixed
-values
-- clls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- clls\_initialize - provide default control parameters and set up initial data structures
+- clls\_read\_specfile (optional) - override control values by reading replacement values from a file
+- clls\_import - set up problem data structures and fixed values
+- clls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - clls\_solve_qp - solve the quadratic program
- - clls\_solve_sldqp - solve the shifted least-distance problem
-- clls\_information (optional) - recover information about
-the solution and solution process
+- clls\_solve_qp - solve the quadratic program
+- clls\_solve_sldqp - solve the shifted least-distance problem
+- clls\_information (optional) - recover information about the solution and solution process
 - clls\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

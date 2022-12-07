@@ -3,13 +3,13 @@
 ## Purpose
 
 Given a **block, symmetric matrix**
-$K_H = \mat{cc}{ H & A^T \\ A& - C },$
+$K_H = \mat{cc}{ H & A^T \\ A & - C },$
 \n
 K_H = ( HA^T )
 ( A- C )
 \n
 this package constructs a variety of **preconditioners** of the form
-$K_{G} = \mat{cc}{ G & A^T \\ A& - C }.$
+$K_{G} = \mat{cc}{ G & A^T \\ A & - C }.$
 \n
 K_G = ( GA^T ).
 ( A- C )
@@ -74,7 +74,7 @@ essential ideas are described in detail in
 
 H. S. Dollar, N. I. M. Gould and A. J. Wathen.
 “On implicit-factorization constraint preconditioners”.
-InLarge Scale Nonlinear Optimization (G. Di Pillo and M. Roma, eds.)
+In Large Scale Nonlinear Optimization (G. Di Pillo and M. Roma, eds.)
 Springer Series on Nonconvex Optimization and Its Applications, Vol. 83,
 Springer Verlag (2006) 61--82
 
@@ -133,19 +133,15 @@ dimension of $R$ is small and a dense Cholesky factorization may be used.
 To solve a given problem, functions from the sbls package must be called
 in the following order:
 
-- sbls\_initialize - provide default control parameters and
-set up initial data structures
-- sbls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- sbls\_initialize - provide default control parameters and set up initial data structures
+- sbls\_read\_specfile (optional) - override control values by reading replacement values from a file
 - sbls\_import - set up matrix data structures
-- sbls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- sbls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - sbls_factorize\_matrix - form and factorize the block
 matrix from its components
 - sbls\_solve_system - solve the block linear system of
 equations
-- sbls\_information (optional) - recover information about
-the solution and solution process
+- sbls\_information (optional) - recover information about the solution and solution process
 - sbls\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

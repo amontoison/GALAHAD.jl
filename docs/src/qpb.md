@@ -5,9 +5,9 @@
 This package uses a primal-dual interior-point trust-region method
 to solve the **quadratic programming problem**
 $\mbox{minimize}\;\; q(x) = \frac{1}{2} x^T H x + g^T x + f $
-\n
+\[
 minimize q(x) := 1/2 x^T H x + g^T x + f
-\n
+\]
 subject to the general linear constraints
 $c_i^l\leqa_i^Tx\leq c_i^u, \;\;\; i = 1, \ldots , m,$
 \n
@@ -192,17 +192,12 @@ Mathematical Programming **87** 215-249.
 To solve a given problem, functions from the qpb package must be called
 in the following order:
 
-- qpb\_initialize - provide default control parameters and
-set up initial data structures
-- qpb\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- qpb\_import - set up problem data structures and fixed
-values
-- qpb\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- qpb\_initialize - provide default control parameters and set up initial data structures
+- qpb\_read\_specfile (optional) - override control values by reading replacement values from a file
+- qpb\_import - set up problem data structures and fixed values
+- qpb\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - qpb\_solve_qp - solve the quadratic program
-- qpb\_information (optional) - recover information about
-the solution and solution process
+- qpb\_information (optional) - recover information about the solution and solution process
 - qpb\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

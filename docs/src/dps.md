@@ -98,13 +98,10 @@ with simplifications due to the diagonal Hessian.
 To solve a given problem, functions from the dps package must be called
 in the following order:
 
-- dps\_initialize - provide default control parameters and
-set up initial data structures
-- dps\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- dps\_initialize - provide default control parameters and set up initial data structures
+- dps\_read\_specfile (optional) - override control values by reading replacement values from a file
 - dps\_import - import control and matrix data structures
-- dps\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- dps\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - one of
 - dps\_solve_tr_problem - solve the trust-region problem (1)
 - dps\_solve_rq_problem - solve the regularized-quadratic
@@ -114,8 +111,7 @@ problem (2)
 (1) when the non-matrix data has changed
 - dps_resolve_rq_problem - resolve the regularized-quadratic
 problem (2) when the non-matrix data has changed
-- dps\_information (optional) - recover information about
-the solution and solution process
+- dps\_information (optional) - recover information about the solution and solution process
 - dps\_terminate - deallocate data structures
 
 ##  Symmetric matrix storage formats

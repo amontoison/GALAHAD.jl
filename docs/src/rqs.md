@@ -97,21 +97,16 @@ Mathematical Programming Computation **2(1)** (2010) 21--57.
 To solve a given problem, functions from the rqs package must be called
 in the following order:
 
-- rqs\_initialize - provide default control parameters and
-set up initial data structures
-- rqs\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- rqs\_import - set up problem data structures and fixed
-values
+- rqs\_initialize - provide default control parameters and set up initial data structures
+- rqs\_read\_specfile (optional) - override control values by reading replacement values from a file
+- rqs\_import - set up problem data structures and fixed values
 - rqs\_import_m - (optional) set up problem data structures
 and fixed values for the scaling matrix $M$, if any
 - rqs\_import_a - (optional) set up problem data structures
 and fixed values for the constraint matrix $A$, if any
-- rqs\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- rqs\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - rqs\_solve_problem - solve the regularised quadratic problem
-- rqs\_information (optional) - recover information about
-the solution and solution process
+- rqs\_information (optional) - recover information about the solution and solution process
 - rqs\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

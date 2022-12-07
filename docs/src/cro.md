@@ -5,9 +5,9 @@
 Provides a **crossover** from a solution
 to the **convex quadratic programming problem**
 $\mbox{minimize}\;\; q(x) = \frac{1}{2} x^T H x + g^T x + f $
-\n
+\[
 minimize q(x) := 1/2 x^T H x + g^T x + f
-\n
+\]
 subject to the general linear constraints
 $c_i^l\leqa_i^Tx\leq c_i^u, \;\;\; i = 1, \ldots , m,$
 \n
@@ -154,10 +154,8 @@ following the basic-non-basic swap using the GALAHAD package SCU.
 To solve a given problem, functions from the cro package must be called
 in the following order:
 
-- cro\_initialize - provide default control parameters and
-set up initial data structures
-- cro\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- cro\_initialize - provide default control parameters and set up initial data structures
+- cro\_read\_specfile (optional) - override control values by reading replacement values from a file
 - cro_crossover_solution - move from a primal-dual soution
 to a full rank one
 - cro\_terminate - deallocate data structures

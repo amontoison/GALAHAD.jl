@@ -74,10 +74,8 @@ forming the factorization from scratch.
 To solve a given problem, functions from the scu package must be called
 in the following order:
 
-- scu\_initialize - provide default control parameters and
-set up initial data structures
-- scu\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- scu\_initialize - provide default control parameters and set up initial data structures
+- scu\_read\_specfile (optional) - override control values by reading replacement values from a file
 - scu_form_and_factorize - form and factorize the
  Schur-complement matrix $S$
 - scu\_solve_system - solve the block system (1)
@@ -85,7 +83,6 @@ by reading replacement values from a file
  the Schur-complement matrix when rows and columns are added to (1).
 - scu_delete_rows_and_cols (optional) - update the factors of
  the Schur-complement matrix when rows and columns are removed from (1).
-- scu\_information (optional) - recover information about
-the solution and solution process
+- scu\_information (optional) - recover information about the solution and solution process
 - scu\_terminate - deallocate data structures
 

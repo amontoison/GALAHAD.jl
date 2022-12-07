@@ -5,9 +5,9 @@
 This package uses a primal-dual interior-point crossover method
 to solve the **convex quadratic programming problem**
 $\mbox{minimize}\;\; q(x) = \frac{1}{2} x^T H x + g^T x + f $
-\n
+\[
 minimize q(x) := 1/2 x^T H x + g^T x + f
-\n
+\]
 or the **shifted least-distance problem**
 $\mbox{minimize}\;\; \frac{1}{2} \sum_{j=1}^n w_j^2 ( x_j - x_j^0 )^2
  + g^T x + f $
@@ -162,19 +162,14 @@ Mathematical Programming Computation 5(2) 113-142.
 To solve a given problem, functions from the ccqp package must be called
 in the following order:
 
-- ccqp\_initialize - provide default control parameters and
-set up initial data structures
-- ccqp\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- ccqp\_import - set up problem data structures and fixed
-values
-- ccqp\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- ccqp\_initialize - provide default control parameters and set up initial data structures
+- ccqp\_read\_specfile (optional) - override control values by reading replacement values from a file
+- ccqp\_import - set up problem data structures and fixed values
+- ccqp\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - ccqp\_solve_qp - solve the quadratic program
- - ccqp\_solve_sldqp - solve the shifted least-distance problem
-- ccqp\_information (optional) - recover information about
-the solution and solution process
+- ccqp\_solve_qp - solve the quadratic program
+- ccqp\_solve_sldqp - solve the shifted least-distance problem
+- ccqp\_information (optional) - recover information about the solution and solution process
 - ccqp\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

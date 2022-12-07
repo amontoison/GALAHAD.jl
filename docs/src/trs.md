@@ -93,21 +93,16 @@ Mathematical Programming Computation **2(1)** (2010) 21--57.
 To solve a given problem, functions from the trs package must be called
 in the following order:
 
-- trs\_initialize - provide default control parameters and
-set up initial data structures
-- trs\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- trs\_import - set up problem data structures and fixed
-values
+- trs\_initialize - provide default control parameters and set up initial data structures
+- trs\_read\_specfile (optional) - override control values by reading replacement values from a file
+- trs\_import - set up problem data structures and fixed values
 - trs\_import_m - (optional) set up problem data structures
 and fixed values for the scaling matrix $M$, if any
 - trs\_import_a - (optional) set up problem data structures
 and fixed values for the constraint matrix $A$, if any
-- trs\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- trs\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - trs\_solve_problem - solve the trust-region problem
-- trs\_information (optional) - recover information about
-the solution and solution process
+- trs\_information (optional) - recover information about the solution and solution process
 - trs\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

@@ -105,26 +105,16 @@ Computational Optimization and Applications 53(1) (2012) 1-22.
 To solve a given problem, functions from the arc package must be called
 in the following order:
 
-- arc\_initialize - provide default control parameters and
-set up initial data structures
-- arc\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- arc\_import - set up problem data structures and fixed
-values
-- arc\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- arc\_initialize - provide default control parameters and set up initial data structures
+- arc\_read\_specfile (optional) - override control values by reading replacement values from a file
+- arc\_import - set up problem data structures and fixed values
+- arc\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - arc\_solve\_with\_mat - solve using function calls to
- evaluate function, gradient and Hessian values
- - arc\_solve\_without\_mat - solve using function calls to
- evaluate function and gradient values and Hessian-vector products
- - arc\_solve\_reverse\_with\_mat - solve returning to the
- calling program to obtain function, gradient and Hessian values, or
- - arc\_solve\_reverse\_without\_mat - solve returning to the
- calling prorgram to obtain function and gradient values and
- Hessian-vector products
-- arc\_information (optional) - recover information about
-the solution and solution process
+- arc\_solve\_with\_mat - solve using function calls to evaluate function, gradient and Hessian values
+- arc\_solve\_without\_mat - solve using function calls to evaluate function and gradient values and Hessian-vector products
+- arc\_solve\_reverse\_with\_mat - solve returning to the calling program to obtain function, gradient and Hessian values, or
+- arc\_solve\_reverse\_without\_mat - solve returning to the calling prorgram to obtain function and gradient values and Hessian-vector products
+- arc\_information (optional) - recover information about the solution and solution process
 - arc\_terminate - deallocate data structures
 
 #  Symmetric matrix storage formats

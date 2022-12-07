@@ -51,19 +51,12 @@ but adapted to use second derivatives.
 To solve a given problem, functions from the ugo package must be called
 in the following order:
 
-- ugo\_initialize - provide default control parameters and
-set up initial data structures
-- ugo\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- ugo\_import - set up problem data structures and fixed
-values
-- ugo\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- ugo\_initialize - provide default control parameters and set up initial data structures
+- ugo\_read\_specfile (optional) - override control values by reading replacement values from a file
+- ugo\_import - set up problem data structures and fixed values
+- ugo\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - ugo\_solve_direct - solve using function calls to
- evaluate function and derivative values, or
- - ugo\_solve\_reverse - solve returning to the
- calling program to obtain function and derivative values
-- ugo\_information (optional) - recover information about
-the solution and solution process
+- ugo\_solve_direct - solve using function calls to evaluate function and derivative values, or
+- ugo\_solve\_reverse - solve returning to the calling program to obtain function and derivative values
+- ugo\_information (optional) - recover information about the solution and solution process
 - ugo\_terminate - deallocate data structures

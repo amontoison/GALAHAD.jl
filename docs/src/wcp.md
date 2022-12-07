@@ -5,19 +5,19 @@
 This package uses a primal-dual interior-point method
 to **find a well-centered interior point** $x$ for a set of
 general linear constraints
-$\mbox{(1)} \;\; c_i^l\leqa_i^Tx\leq c_i^u, \;\;\; i = 1, \ldots , m,$
+$\mbox{(1)} \;\; c_i^l \leq a_i^Tx \leq c_i^u, \;\;\; i = 1, \ldots , m,$
 \n
- (1)c_i^l \[<=] a_i^Tx \[<=] c_i^u, i = 1, ... , m,
+ (1) c_i^l \[<=] a_i^Tx \[<=] c_i^u, i = 1, ... , m,
 \n
 and the simple bound constraints
-$\mbox{(2)} \;\; x_j^l\leqx_j \leq x_j^u, \;\;\; j = 1, \ldots , n,$
+$\mbox{(2)} \;\; x_j^l \leq x_j \leq x_j^u, \;\;\; j = 1, \ldots , n,$
 \n
  (2) x_j^l \[<=] x_j \[<=] x_j^u, j = 1, ... , n,
 \n
 where the vectors
 $a_{i}$, $c^l$, $c^u$, $x^l$ and $x^u$ are given.
 More specifically, if possible, the package finds a solution to the
-system ofprimal optimality equations
+system of primal optimality equations
 $\mbox{(3)} \;\; A x = c,$
 \n
 (3) A x = c,
@@ -31,16 +31,16 @@ and perturbed complementary slackness equations
 $\mbox{(5)} \;\;
 ( c_i - c^l_i ) y^l_i = (\mu_c^l)_i \;\mbox{and}\;
 ( c_i - c_i^u ) y^u_i = (\mu_c^u)_i, \;\;\;
- i = 1, \ldots , m,$
+ i = 1, \ldots , m, $
 \n
 (c_i - c^l_i) y^l_i = (mu_c^l)_i and
 (c_i - c_i^u) y^u_i = (mu_c^u)_i, i = 1,...,m,
 \n
 and
 $\mbox{(6)} \;\;
-((x_j - x^l_j ) z_j^l = (\mu_x^l)_j\;\mbox{and}\;
+((x_j - x^l_j ) z_j^l = (\mu_x^l)_j \;\mbox{and}\;
 ( x_j - x^u_j ) z_j^u = (\mu_x^u)_j, \;\;\;
- j = 1, \ldots , n,$
+ j = 1, \ldots , n, $
 \n
 (x_j - c^l_j) z^l_j = (mu_x^l)_j and
 (x_j - x_j^u) z^u_j = (mu_x^u)_i, j = 1,...,n,
@@ -48,11 +48,11 @@ $\mbox{(6)} \;\;
 for which
 \[
 \mbox{(7)} \;\; c^l \leq c \leq c^u, \;\; x^l \leq x \leq x^u, \;\;
-y^l \geq 0 , \;\;y^u \leq 0 , \;\; z^l \geq 0 \;\; \mbox{and} \;\; z^u \leq 0
+y^l \geq 0 , \;\; y^u \leq 0 , \;\; z^l \geq 0 \;\; \mbox{and} \;\; z^u \leq 0
 \]
 $$
 \mbox{(7)} \;\; c^l \leq c \leq c^u, \;\; x^l \leq x \leq x^u, \;\;
-y^l \geq 0 , \;\;y^u \leq 0 , \;\; z^l \geq 0 \;\; \mbox{and} \;\; z^u \leq 0
+y^l \geq 0 , \;\; y^u \leq 0 , \;\; z^l \geq 0 \;\; \mbox{and} \;\; z^u \leq 0
 $$
 \n
 (7) c^l \[<=] c \[<=] c^u, x^l \[<=] x \[<=] x^u,
@@ -67,11 +67,11 @@ bounds respectively; $c$ gives the constraint value $A x$.
 Since (5)-(7) normally imply that
 \[
 \mbox{(8)} \;\; c^l < c < c^u, \;\; x^l < x < x^u, \;\;
-y^l > 0 , \;\;y^u < 0 , \;\; z^l > 0 \;\; \mbox{and} \;\; z^u < 0
+y^l > 0 , \;\; y^u < 0 , \;\; z^l > 0 \;\; \mbox{and} \;\; z^u < 0
 \]
 $$
 \mbox{(8)} \;\; c^l < c < c^u, \;\; x^l < x < x^u, \;\;
-y^l > 0 , \;\;y^u < 0 , \;\; z^l > 0 \;\; \mbox{and} \;\; z^u < 0
+y^l > 0 , \;\; y^u < 0 , \;\; z^l > 0 \;\; \mbox{and} \;\; z^u < 0
 $$
 \n
 (8) c^l < c < c^u, x^l <; x < x^u,
@@ -83,7 +83,7 @@ interior-point methods for solving the linear programming problem
 of minimizing $g^T x$ subject to (1) and (2).
 
 Full advantage is taken of any zero coefficients in the vectors
-$a_{i}$.Any of the constraint bounds $c_{i}^l$,
+$a_{i}$. Any of the constraint bounds $c_{i}^l$,
 $c_{i}^u$, $x_{j}^l$ and $x_{j}^u$ may be infinite.
 The package identifies infeasible problems, and problems for which
 there is no strict interior, that is one or more of (8)
@@ -118,8 +118,8 @@ $\mbox{(9)}\;\;
 \n
  ( c_i - c^l_i + (theta_c^l)_i ) ( y^l_i + (theta_y^l)_i )
 (9) = (mu_c^l)_i and
- ( c_i - c_i^u - (theta_c^u)_i )( y^u_i - (theta_y^u)_i )
-= (mu_c^u)_i,i = 1,...,m
+ ( c_i - c_i^u - (theta_c^u)_i ) ( y^u_i - (theta_y^u)_i )
+= (mu_c^u)_i, i = 1,...,m
 \n
 $\mbox{(10)}\;\;
 ( x_j - x^l_j + (\theta_x^l)_j )
@@ -130,7 +130,7 @@ $\mbox{(10)}\;\;
 = (\mu_x^u)_j, \;\;\;
  j = 1, \ldots , n,$
 \n
- ( x_j - x^l_j + (\theta_x^l)_j )( z^l_j + (\theta_z^l)_j )
+ ( x_j - x^l_j + (\theta_x^l)_j ) ( z^l_j + (\theta_z^l)_j )
 (10) = (\mu_x^l)_j and
  ( x_j - x_j^u - (\theta_x^u)_j ) ( z^u_j - (\theta_z^u)_j )
  = (\mu_x^u)_j, j = 1,...,n,
@@ -150,11 +150,11 @@ y^l > - theta_y^l, y^u < theta_y^u,
 z^l > - theta_z^l and z^u < theta_z^,
 \n
 where the vectors of perturbations
-$\theta^l_c$,$\theta^u_c$,$\theta^l_x$,$\theta^u_x$,
-$\theta^l_x$,$\theta^u_x$,$\theta^l_y$,$\theta^u_y$,
-$\theta^l_z$ and$\theta^u_z$,
+$\theta^l_c$, $\theta^u_c$, $\theta^l_x$, $\theta^u_x$,
+$\theta^l_x$, $\theta^u_x$, $\theta^l_y$, $\theta^u_y$,
+$\theta^l_z$ and $\theta^u_z$,
 are non-negative. Rather than solve (3)-(4) and (9)-(11) exactly,
-we instead seek a feasible point for the easier relaxation(3)-(4) and
+we instead seek a feasible point for the easier relaxation (3)-(4) and
 $\mbox{(12)}\;\;
 \begin{array}{rcccll}
 \gamma (\mu_c^l)_i & \leq &
@@ -167,7 +167,7 @@ i = 1, \ldots , m, \;\mbox{and}\; \\
 \gamma (\mu_x^l)_j & \leq &
 ( x_j - x^l_j + (\theta_x^l)_j ) ( z^l_j + (\theta_z^l)_j )
 & \leq & (\mu_x^l)_j /\gamma & \mbox{and}\; \\
-\gamma (\mu_x^u)_j& \leq &
+\gamma (\mu_x^u)_j & \leq &
 ( x_j - x_j^u - (\theta_x^u)_j )
 ( z^u_j - (\theta_z^u)_j )
 & \leq & (\mu_x^u)_j /\gamma , &j = 1, \ldots , n,
@@ -175,16 +175,16 @@ i = 1, \ldots , m, \;\mbox{and}\; \\
 \n
  gamma (mu_c^l)_i
 \[<=] ( c_i - c^l_i + (theta_c^l)_i ) ( y^l_i + (theta_y^l)_i )
-\[<=](mu_c^l)_i / gamma and
+\[<=] (mu_c^l)_i / gamma and
  gamma (mu_c^u)_i
 \[<=] ( c_i - c_i^u - (theta_c^u)_i ) ( y^u_i - (theta_y^u)_i )
- (12) \[<=](mu_c^u)_i, /gamma i = 1,...,m, and
+ (12) \[<=] (mu_c^u)_i, /gamma i = 1,...,m, and
  gamma (mu_x^l)_j
 \[<=] ( x_j - x^l_j + (theta_x^l)_j ) ( z^l_j + (theta_z^l)_j )
-\[<=](mu_x^l)_j /gamma and
+\[<=] (mu_x^l)_j /gamma and
  gamma (mu_x^u)_j
 \[<=] ( x_j - x_j^u - (theta_x^u)_j ) ( z^u_j - (theta_z^u)_j )
-\[<=](mu_x^u)_j /gamma , j = 1,...,n,
+\[<=] (mu_x^u)_j /gamma , j = 1,...,n,
 \n
 for some $\gamma \in (0,1]$ which is allowed to be smaller than one
 if there is a nonzero perturbation.
@@ -208,7 +208,7 @@ positive perturbations so as to try to accelerate the convergence.
 Ultimately the intention is to drive all the perturbations to zero.
 It can be shown that if the original problem (3)-(6) and (8)
 has a solution, the perturbations will be zero after a finite number of major
-iterations. Equally, if there is no interior solution(8)
+iterations. Equally, if there is no interior solution (8)
 the sets of (primal and dual) variables that are necessarily at (one of) their
 bounds for all feasible points---we refer to these as {\em implicit}
 equalities---will be identified, as will the possibility that there is
@@ -231,23 +231,23 @@ $\ddot{u}$
 u” \
 account for the nonlinearity in (9) and (10), is truncated so as to
 ensure that
-$(c_i(\alpha) - c^l_i + (\theta_c^l)_i)(y^l_i(\alpha) + (\theta_y^l)_i)
+$(c_i(\alpha) - c^l_i + (\theta_c^l)_i) (y^l_i(\alpha) + (\theta_y^l)_i)
 \geq \tau (\mu_c^l)_i \;\mbox{and}\;
-(c_i(\alpha) - c_i^u - (\theta_c^u)_i)(y^u_i(\alpha) - (\theta_y^u)_i)
+(c_i(\alpha) - c_i^u - (\theta_c^u)_i) (y^u_i(\alpha) - (\theta_y^u)_i)
 \geq \tau (\mu_c^u)_i, \;\;\; i = 1, \ldots , m,$
 \n
-(c_i(alpha) - c^l_i + (theta_c^l)_i)(y^l_i(alpha) + (theta_z^l)_i)
+(c_i(alpha) - c^l_i + (theta_c^l)_i) (y^l_i(alpha) + (theta_z^l)_i)
 \[>=] tau (mu_c^l)_i and
 (c_i(alpha) - c_i^u - (theta_c^u)_i ) (y^u_i(alpha) - (theta_z^u)_i)
 \[>=] tau (mu_c^u)_i, i = 1,...,m
 \n
 and
-$(x_j(\alpha) - x^l_j + (\theta_x^l)_j)(z^l_j(\alpha) + (\theta_z^l)_j)
+$(x_j(\alpha) - x^l_j + (\theta_x^l)_j) (z^l_j(\alpha) + (\theta_z^l)_j)
 \geq \tau (\mu_x^l)_j \;\mbox{and}\;
 (x_j(\alpha) - x_j^u - (\theta_x^u)_j ) (z^u_j(\alpha) - (\theta_z^u)_j)
 \geq \tau (\mu_x^u)_j, \;\;\; j = 1, \ldots , n,$
 \n
-(x_j(alpha) - x^l_j + (theta_x^l)_j)(z^l_j(alpha) + (theta_z^l)_j)
+(x_j(alpha) - x^l_j + (theta_x^l)_j) (z^l_j(alpha) + (theta_z^l)_j)
 \[>=] tau (mu_x^l)_j and
 (x_j(alpha) - x_j^u - (theta_x^u)_j ) (z^u_j(alpha) - (theta_z^u)_j)
 \[>=] tau (mu_x^u)_j, j = 1,...,n
@@ -278,7 +278,7 @@ $$
 ( alpha I A_E^T ),
 (A_E0 )
 \n
-where $A_E$denotes the gradients of the equality constraints and
+where $A_E$ denotes the gradients of the equality constraints and
 $\alpha > 0$ is a given scaling factor,
 using the GALAHAD package SBLS, and examining small pivot blocks.
 
@@ -296,17 +296,12 @@ Technical Report TR-2006-016, Rutherford Appleton Laboratory.
 To solve a given problem, functions from the wcp package must be called
 in the following order:
 
-- wcp\_initialize - provide default control parameters and
-set up initial data structures
-- wcp\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- wcp\_import - set up problem data structures and fixed
-values
-- wcp\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- wcp\_initialize - provide default control parameters and set up initial data structures
+- wcp\_read\_specfile (optional) - override control values by reading replacement values from a file
+- wcp\_import - set up problem data structures and fixed values
+- wcp\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - wcp_find_wcp - find a well-centered point
-- wcp\_information (optional) - recover information about
-the solution and solution process
+- wcp\_information (optional) - recover information about the solution and solution process
 - wcp\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats
@@ -314,7 +309,7 @@ the solution and solution process
 The unsymmetric $m$ by $n$ constraint matrix $A$ may be presented
 and stored in a variety of convenient input formats.
 
-Both C-style (0 based)and fortran-style (1-based) indexing is allowed.
+Both C-style (0 based) and fortran-style (1-based) indexing is allowed.
 Choose control.f_indexing as false for C style and true for
 fortran style; the discussion below presumes C style, but add 1 to
 indices for the corresponding fortran version.
@@ -325,10 +320,10 @@ conversion involves both time and memory overheads that may be avoided
 by supplying data that is already stored using 1-based indexing.
 
 ### Dense storage format
-The matrix $A$ is stored as a compactdense matrix by rows, that is,
+The matrix $A$ is stored as a compact dense matrix by rows, that is,
 the values of the entries of each row in turn are
 stored in order within an appropriate real one-dimensional array.
-In this case, component $n \ast i + j$of the storage array A_val
+In this case, component $n \ast i + j$ of the storage array A_val
 will hold the value $A_{ij}$ for $0 \leq i \leq m-1$,
 $0 \leq j \leq n-1$.
 
@@ -338,7 +333,7 @@ Only the nonzero entries of the matrices are stored.
 For the $l$-th entry, $0 \leq l \leq ne-1$, of $A$,
 its row index i, column index j
 and value $A_{ij}$,
-$0 \leq i \leq m-1$,$0 \leq j \leq n-1$,are stored as
+$0 \leq i \leq m-1$, $0 \leq j \leq n-1$, are stored as
 the $l$-th components of the integer arrays A_row and
 A_col and real array A_val, respectively, while the number of nonzeros
 is recorded as A_ne = $ne$.
@@ -351,8 +346,8 @@ in row i+1. For the i-th row of $A$ the i-th component of the
 integer array A_ptr holds the position of the first entry in this row,
 while A_ptr(m) holds the total number of entries plus one.
 The column indices j, $0 \leq j \leq n-1$, and values
-$A_{ij}$ of thenonzero entries in the i-th row are stored in components
-l = A_ptr(i), $\ldots$, A_ptr(i+1)-1,$0 \leq i \leq m-1$,
+$A_{ij}$ of the nonzero entries in the i-th row are stored in components
+l = A_ptr(i), $\ldots$, A_ptr(i+1)-1, $0 \leq i \leq m-1$,
 of the integer array A_col, and real array A_val, respectively.
 For sparse matrices, this scheme almost always requires less storage than
 its predecessor.

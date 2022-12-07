@@ -5,9 +5,9 @@
 This package usesa preconditioned, projected-gradient method
 to solve the **convex bound-constrained quadratic programming problem**
 $\mbox{minimize}\;\; q(x) = \frac{1}{2} x^T H x + g^T x + f $
-\n
+\[
 minimize q(x) := 1/2 x^T H x + g^T x + f
-\n
+\]
 subject to the simple bound constraints
 $x_j^l\leqx_j \leq x_j^u, \;\;\; j = 1, \ldots , n,$
 \n
@@ -84,24 +84,20 @@ SIAM Journal on Numerical Analysis **25** 433-460,
 To solve a given problem, functions from the bqp package must be called
 in the following order:
 
-- bqp\_initialize - provide default control parameters and
-set up initial data structures
-- bqp\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- bqp\_initialize - provide default control parameters and set up initial data structures
+- bqp\_read\_specfile (optional) - override control values by reading replacement values from a file
 - set up problem data structures and fixed values by caling one of
- - bqp\_import - in the case that $H$ is explicitly
+- bqp\_import - in the case that $H$ is explicitly
 available
- - bqp\_import\_without_h - in the case that only the
+- bqp\_import\_without_h - in the case that only the
 effect of applying $H$ to a vector is possible
-- bqp\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- bqp\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - bqp\_solve_given_h - solve the problem using values
+- bqp\_solve_given_h - solve the problem using values
 of $H$
- - bqp\_solve\_reverse_h_prod - solve the problem by returning
+- bqp\_solve\_reverse_h_prod - solve the problem by returning
  to the caller for products of $H$ with specified vectors
-- bqp\_information (optional) - recover information about
-the solution and solution process
+- bqp\_information (optional) - recover information about the solution and solution process
 - bqp\_terminate - deallocate data structures
 
 ##  Symmetric matrix storage formats

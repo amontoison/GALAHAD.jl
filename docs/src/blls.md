@@ -96,25 +96,21 @@ In preparation.
 To solve a given problem, functions from the blls package must be called
 in the following order:
 
-- blls\_initialize - provide default control parameters and
-set up initial data structures
-- blls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- blls\_initialize - provide default control parameters and set up initial data structures
+- blls\_read\_specfile (optional) - override control values by reading replacement values from a file
 - set up problem data structures and fixed values by caling one of
- - blls\_import - in the case that $A$ is explicitly
+- blls\_import - in the case that $A$ is explicitly
 available
- - blls\_import\_without_a - in the case that only the
+- blls\_import\_without_a - in the case that only the
 effect of applying $A$ and its transpose to a vector is possible
-- blls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- blls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - blls\_solve_given_a - solve the problem using values
+- blls\_solve_given_a - solve the problem using values
 of $A$
- - blls\_solve\_reverse_a_prod - solve the problem by returning
+- blls\_solve\_reverse_a_prod - solve the problem by returning
  to the caller for products of $A$ and its transpose with specified
 vectors
-- blls\_information (optional) - recover information about
-the solution and solution process
+- blls\_information (optional) - recover information about the solution and solution process
 - blls\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

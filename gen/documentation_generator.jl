@@ -42,6 +42,18 @@ modifications3 = Dict("``" => "“",
                       "_read" => "\\_read",
                       "_specfile" => "\\_specfile")
 
+modifications4 = Dict("\nSee Section~\\ref{examples} for examples of use.\nSee the <a href=\"examples.html\">examples tab</a> for illustrations of use.\nSee the examples section for illustrations of use.\n" => "",
+                      "\\n\nminimize q(x) := 1/2 x^T H x + g^T x + f\n\\n" => "\\[\nminimize q(x) := 1/2 x^T H x + g^T x + f\n\\]")
+
+modifications5 = Dict("control parameters and\nset up" => "control parameters and set up",
+                      "control values\nby" => "control values by",
+                      "control\nparameters" => "control parameters",
+                      "information about\nthe solution" => "information about the solution",
+                      "fixed\nvalues" => "fixed values",
+                      "calls to\n evaluate" => "calls to evaluate",
+                      "to the\n calling" => "to the calling",
+                      "values and\n Hessian" => "values and Hessian")
+
 function generator(name::String, path::String)
   text = read(path, String)
   text = replace(text, "  " => "")
@@ -59,10 +71,16 @@ function generator(name::String, path::String)
   for (keys, vals) in modifications3
     text = replace(text, keys => vals)
   end
+  for (keys, vals) in modifications4
+    text = replace(text, keys => vals)
+  end
+  for (keys, vals) in modifications5
+    text = replace(text, keys => vals)
+  end
   for str in ("intro ", "purpose ", "authors ", "date ", "terminology ", "method ", "references ", "call_order ")
       text = replace(text, name * "_" * str => "")
   end
-  text = replace(text, "\nSee Section~\\ref{examples} for examples of use.\nSee the <a href=\"examples.html\">examples tab</a> for illustrations of use.\nSee the examples section for illustrations of use.\n" => "")
+  text = replace(text, " - $name" => "- $name")
   write("../docs/src/$name.md", text)
 end
 

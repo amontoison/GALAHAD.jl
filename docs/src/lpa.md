@@ -176,17 +176,12 @@ Mathematical Programming **24** 55-69.
 To solve a given problem, functions from the lpa package must be called
 in the following order:
 
-- lpa\_initialize - provide default control parameters and
-set up initial data structures
-- lpa\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- lpa\_import - set up problem data structures and fixed
-values
-- lpa\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- lpa\_initialize - provide default control parameters and set up initial data structures
+- lpa\_read\_specfile (optional) - override control values by reading replacement values from a file
+- lpa\_import - set up problem data structures and fixed values
+- lpa\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - lpa\_solve_lp - solve the linear program
-- lpa\_information (optional) - recover information about
-the solution and solution process
+- lpa\_information (optional) - recover information about the solution and solution process
 - lpa\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

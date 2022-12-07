@@ -5,9 +5,9 @@
 This package uses a primal-dual interior-point method
 to solve the **convex quadratic programming problem**
 $\mbox{minimize}\;\; q(x) = \frac{1}{2} x^T H x + g^T x + f $
-\n
+\[
 minimize q(x) := 1/2 x^T H x + g^T x + f
-\n
+\]
 or the **shifted least-distance problem**
 $\mbox{minimize}\;\; \frac{1}{2} \sum_{j=1}^n w_j^2 ( x_j - x_j^0 )^2
  + g^T x + f $
@@ -136,21 +136,16 @@ Mathematical Programming Computation 5(2) 113-142.
 To solve a given problem, functions from the bqpb package must be called
 in the following order:
 
-- bqpb\_initialize - provide default control parameters and
-set up initial data structures
-- bqpb\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- bqpb\_import - set up problem data structures and fixed
-values
-- bqpb\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- bqpb\_initialize - provide default control parameters and set up initial data structures
+- bqpb\_read\_specfile (optional) - override control values by reading replacement values from a file
+- bqpb\_import - set up problem data structures and fixed values
+- bqpb\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - bqpb\_solve_qp - solve the bound-constrained
+- bqpb\_solve_qp - solve the bound-constrained
 quadratic program
- - bqpb\_solve_sldqp - solve the bound-constrained
+- bqpb\_solve_sldqp - solve the bound-constrained
  shifted least-distance problem
-- bqpb\_information (optional) - recover information about
-the solution and solution process
+- bqpb\_information (optional) - recover information about the solution and solution process
 - bqpb\_terminate - deallocate data structures
 
 ##  Symmetric matrix storage formats

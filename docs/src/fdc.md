@@ -49,10 +49,8 @@ determine whether the system is consistent.
 To solve a given problem, functions from the fdc package must be called
 in the following order:
 
-- fdc\_initialize - provide default control parameters and
-set up initial data structures
-- fdc\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- fdc\_initialize - provide default control parameters and set up initial data structures
+- fdc\_read\_specfile (optional) - override control values by reading replacement values from a file
 - fdc_find_dependent_rows - find the number of dependent
 rows and, if there are any, whether the constraints are
 independent

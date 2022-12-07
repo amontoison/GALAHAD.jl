@@ -99,10 +99,8 @@ SIAM Journal on Optimization **9:2** (1999), 504-525.
 To solve a given problem, functions from the gltr package must be called
 in the following order:
 
-- gltr\_initialize - provide default control parameters and
-set up initial data structures
-- gltr\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- gltr\_initialize - provide default control parameters and set up initial data structures
+- gltr\_read\_specfile (optional) - override control values by reading replacement values from a file
 - gltr\_import\_control - import control parameters prior to
 solution
 - gltr\_solve_problem - solve the problem by reverse
@@ -110,8 +108,7 @@ communication, a sequence of calls are made under control of a status
 parameter, each exit either asks the user to provide additional
 informaton and to re-enter, or reports that either the solution has
 been found or that an error has occurred
-- gltr\_information (optional) - recover information about
-the solution and solution process
+- gltr\_information (optional) - recover information about the solution and solution process
 - gltr\_terminate - deallocate data structures
 
 See Section~\ref{examples} for an example of use.

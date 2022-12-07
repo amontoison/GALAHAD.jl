@@ -151,17 +151,12 @@ Mathematical Programming Computation 5(2) 113-142.
 To solve a given problem, functions from the lpb package must be called
 in the following order:
 
-- lpb\_initialize - provide default control parameters and
-set up initial data structures
-- lpb\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- lpb\_import - set up problem data structures and fixed
-values
-- lpb\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- lpb\_initialize - provide default control parameters and set up initial data structures
+- lpb\_read\_specfile (optional) - override control values by reading replacement values from a file
+- lpb\_import - set up problem data structures and fixed values
+- lpb\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - lpb\_solve_lp - solve the linear program
-- lpb\_information (optional) - recover information about
-the solution and solution process
+- lpb\_information (optional) - recover information about the solution and solution process
 - lpb\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

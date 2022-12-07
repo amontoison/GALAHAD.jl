@@ -184,14 +184,11 @@ NY 10598, USA (2010).
 To solve a given problem, functions from the sls package must be called
 in the following order:
 
-- sls\_initialize - provide default control parameters and
-set up initial data structures
-- sls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- sls\_initialize - provide default control parameters and set up initial data structures
+- sls\_read\_specfile (optional) - override control values by reading replacement values from a file
 - sls_analyse\_matrix - set up matrix data structures
  and analyse the structure to choose a suitable order for factorization
-- sls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- sls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - sls_factorize\_matrix - form and factorize the
 matrix $A$
 - one of
@@ -199,8 +196,7 @@ matrix $A$
 equations $Ax=b$
 - sls_partial\_solve_system - solve a linear system
 $Mx=b$ involving one of the matrix factors $M$ of $A$
-- sls\_information (optional) - recover information about
-the solution and solution process
+- sls\_information (optional) - recover information about the solution and solution process
 - sls\_terminate - deallocate data structures
 
 ##  Symmetric matrix storage formats

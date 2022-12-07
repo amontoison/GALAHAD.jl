@@ -5,9 +5,9 @@
 This package uses an iterative method to solve the
 **equality-constrained quadratic programming problem**
 $\mbox{minimize}\;\; q(x) = \frac{1}{2} x^T H x + g^T x + f $
-\n
+\[
 minimize q(x) := 1/2 x^T H x + g^T x + f
-\n
+\]
 subject to the linear constraints
 $(1) \;\; A x + c = 0,$
 where the $n$ by $n$ symmetric matrix $H$,
@@ -110,21 +110,16 @@ SIAM Journal on Optimization **9:2** (1999), 504-525.
 To solve a given problem, functions from the eqp package must be called
 in the following order:
 
-- eqp\_initialize - provide default control parameters and
-set up initial data structures
-- eqp\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- eqp\_import - set up problem data structures and fixed
-values
-- eqp\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- eqp\_initialize - provide default control parameters and set up initial data structures
+- eqp\_read\_specfile (optional) - override control values by reading replacement values from a file
+- eqp\_import - set up problem data structures and fixed values
+- eqp\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - eqp\_solve_qp - solve the quadratic program
- - eqp\_solve_sldqp - solve the shifted least-distance problem
+- eqp\_solve_qp - solve the quadratic program
+- eqp\_solve_sldqp - solve the shifted least-distance problem
 - eqp_resolve_qp (optional) - resolve the problem with the
 same Hessian and Jacobian, but different $g$, $f$ and/or $c$
-- eqp\_information (optional) - recover information about
-the solution and solution process
+- eqp\_information (optional) - recover information about the solution and solution process
 - eqp\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

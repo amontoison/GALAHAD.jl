@@ -108,14 +108,11 @@ unless a complete re-factorization is likely more efficient.
 To solve a given problem, functions from the psls package must be called
 in the following order:
 
-- psls\_initialize - provide default control parameters and
-set up initial data structures
-- psls\_read\_specfile (optional) - override control values
-by reading replacement values from a file
+- psls\_initialize - provide default control parameters and set up initial data structures
+- psls\_read\_specfile (optional) - override control values by reading replacement values from a file
 - psls\_import - set up matrix data structures for $A$
 prior to solution
-- psls\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- psls\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - one of
 - psls_form_preconditioner - form and factorize a
 preconditioner $P$ of the matrix $A$

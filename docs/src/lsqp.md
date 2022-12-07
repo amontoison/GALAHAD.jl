@@ -190,17 +190,12 @@ Mathematical Programming **87** 215-249.
 To solve a given problem, functions from the lsqp package must be called
 in the following order:
 
-- lsqp\_initialize - provide default control parameters and
-set up initial data structures
-- lsqp\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- lsqp\_import - set up problem data structures and fixed
-values
-- lsqp\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- lsqp\_initialize - provide default control parameters and set up initial data structures
+- lsqp\_read\_specfile (optional) - override control values by reading replacement values from a file
+- lsqp\_import - set up problem data structures and fixed values
+- lsqp\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - lsqp\_solve_qp - solve the quadratic program
-- lsqp\_information (optional) - recover information about
-the solution and solution process
+- lsqp\_information (optional) - recover information about the solution and solution process
 - lsqp\_terminate - deallocate data structures
 
 ##  Unsymmetric matrix storage formats

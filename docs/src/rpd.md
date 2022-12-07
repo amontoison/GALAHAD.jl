@@ -82,26 +82,25 @@ Mathematical Programming Computation **11** 237–265.
 To decode a given QPLIB file, functions from the rpd package must be called
 in the following order:
 
-- rpd\_initialize - provide default control parameters and
-set up initial data structures
+- rpd\_initialize - provide default control parameters and set up initial data structures
 - rpd_get_stats - read a given QPLIB file into internal
  data structures, and report vital statistics
 - (optionally, and in any order, where relevant)
- - rpd_get_g - get the objective gradient term $g$
- - rpd_get_f - get the objective constant term $f$
- - rpd_get_xlu - get the variable bounds
+- rpd_get_g - get the objective gradient term $g$
+- rpd_get_f - get the objective constant term $f$
+- rpd_get_xlu - get the variable bounds
  $x_l$ and $x_u$
- - rpd_get_xlu - get the constraint bounds
+- rpd_get_xlu - get the constraint bounds
 $c_l$ and $c_u$
- - rpd_get_h - get the objective Hessian term $H$
- - rpd_get_a - get the constrain Jacobian term $A$
- - rpd_get_h_c - get the constraint Hessian terms $H_c$
- - rpd_get_x_type - determine the type of each variable
+- rpd_get_h - get the objective Hessian term $H$
+- rpd_get_a - get the constrain Jacobian term $A$
+- rpd_get_h_c - get the constraint Hessian terms $H_c$
+- rpd_get_x_type - determine the type of each variable
  $x$
- - rpd_get_x - get initial value of the variable $x$
- - rpd_get_y - get initial value of Lagrange multipliers
+- rpd_get_x - get initial value of the variable $x$
+- rpd_get_y - get initial value of Lagrange multipliers
 $y$
- - rpd_get_z - get initial value of the dual variables
+- rpd_get_z - get initial value of the dual variables
 $z$
 - rpd\_terminate - deallocate data structures
 

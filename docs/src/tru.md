@@ -95,26 +95,16 @@ SIAM/MPS Series on Optimization (2000).
 To solve a given problem, functions from the tru package must be called
 in the following order:
 
-- tru\_initialize - provide default control parameters and
-set up initial data structures
-- tru\_read\_specfile (optional) - override control values
-by reading replacement values from a file
-- tru\_import - set up problem data structures and fixed
-values
-- tru\_reset\_control (optional) - possibly change control
-parameters if a sequence of problems are being solved
+- tru\_initialize - provide default control parameters and set up initial data structures
+- tru\_read\_specfile (optional) - override control values by reading replacement values from a file
+- tru\_import - set up problem data structures and fixed values
+- tru\_reset\_control (optional) - possibly change control parameters if a sequence of problems are being solved
 - solve the problem by calling one of
- - tru\_solve\_with\_mat - solve using function calls to
- evaluate function, gradient and Hessian values
- - tru\_solve\_without\_mat - solve using function calls to
- evaluate function and gradient values and Hessian-vector products
- - tru\_solve\_reverse\_with\_mat - solve returning to the
- calling program to obtain function, gradient and Hessian values, or
- - tru\_solve\_reverse\_without\_mat - solve returning to the
- calling prorgram to obtain function and gradient values and
- Hessian-vector products
-- tru\_information (optional) - recover information about
-the solution and solution process
+- tru\_solve\_with\_mat - solve using function calls to evaluate function, gradient and Hessian values
+- tru\_solve\_without\_mat - solve using function calls to evaluate function and gradient values and Hessian-vector products
+- tru\_solve\_reverse\_with\_mat - solve returning to the calling program to obtain function, gradient and Hessian values, or
+- tru\_solve\_reverse\_without\_mat - solve returning to the calling prorgram to obtain function and gradient values and Hessian-vector products
+- tru\_information (optional) - recover information about the solution and solution process
 - tru\_terminate - deallocate data structures
 
 #  Symmetric matrix storage formats
