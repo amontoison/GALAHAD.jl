@@ -57,70 +57,70 @@ mutable struct slls_inform_type
 end
 
 function slls_initialize(data, control, status)
-    @ccall libgalahad_all.slls_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{slls_control_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.slls_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{slls_control_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function slls_read_specfile(control, specfile)
-    @ccall libgalahad_all.slls_read_specfile(control::Ptr{slls_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.slls_read_specfile(control::Ptr{slls_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
 function slls_import(control, data, status, n, m, A_type, A_ne, A_row, A_col, A_ptr)
-    @ccall libgalahad_all.slls_import(control::Ptr{slls_control_type},
-                                      data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                      m::Cint, A_type::Ptr{Cchar}, A_ne::Cint,
-                                      A_row::Ptr{Cint}, A_col::Ptr{Cint},
-                                      A_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.slls_import(control::Ptr{slls_control_type},
+                                         data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                         m::Cint, A_type::Ptr{Cchar}, A_ne::Cint,
+                                         A_row::Ptr{Cint}, A_col::Ptr{Cint},
+                                         A_ptr::Ptr{Cint})::Cvoid
 end
 
 function slls_import_without_a(control, data, status, n, m)
-    @ccall libgalahad_all.slls_import_without_a(control::Ptr{slls_control_type},
-                                                data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                                n::Cint, m::Cint)::Cvoid
+    @ccall libgalahad_double.slls_import_without_a(control::Ptr{slls_control_type},
+                                                   data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                                   n::Cint, m::Cint)::Cvoid
 end
 
 function slls_reset_control(control, data, status)
-    @ccall libgalahad_all.slls_reset_control(control::Ptr{slls_control_type},
-                                             data::Ptr{Ptr{Cvoid}},
-                                             status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.slls_reset_control(control::Ptr{slls_control_type},
+                                                data::Ptr{Ptr{Cvoid}},
+                                                status::Ptr{Cint})::Cvoid
 end
 
 function slls_solve_given_a(data, userdata, status, n, m, A_ne, A_val, b, x, z, c, g,
                             x_stat, eval_prec)
-    @ccall libgalahad_all.slls_solve_given_a(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
-                                             status::Ptr{Cint}, n::Cint, m::Cint,
-                                             A_ne::Cint, A_val::Ptr{Float64},
-                                             b::Ptr{Float64}, x::Ptr{Float64},
-                                             z::Ptr{Float64}, c::Ptr{Float64},
-                                             g::Ptr{Float64}, x_stat::Ptr{Cint},
-                                             eval_prec::Ptr{Cvoid})::Cvoid
+    @ccall libgalahad_double.slls_solve_given_a(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
+                                                status::Ptr{Cint}, n::Cint, m::Cint,
+                                                A_ne::Cint, A_val::Ptr{Float64},
+                                                b::Ptr{Float64}, x::Ptr{Float64},
+                                                z::Ptr{Float64}, c::Ptr{Float64},
+                                                g::Ptr{Float64}, x_stat::Ptr{Cint},
+                                                eval_prec::Ptr{Cvoid})::Cvoid
 end
 
 function slls_solve_reverse_a_prod(data, status, eval_status, n, m, b, x, z, c, g, x_stat,
                                    v, p, nz_v, nz_v_start, nz_v_end, nz_p, nz_p_end)
-    @ccall libgalahad_all.slls_solve_reverse_a_prod(data::Ptr{Ptr{Cvoid}},
-                                                    status::Ptr{Cint},
-                                                    eval_status::Ptr{Cint}, n::Cint,
-                                                    m::Cint, b::Ptr{Float64},
-                                                    x::Ptr{Float64}, z::Ptr{Float64},
-                                                    c::Ptr{Float64}, g::Ptr{Float64},
-                                                    x_stat::Ptr{Cint}, v::Ptr{Float64},
-                                                    p::Ptr{Float64}, nz_v::Ptr{Cint},
-                                                    nz_v_start::Ptr{Cint},
-                                                    nz_v_end::Ptr{Cint}, nz_p::Ptr{Cint},
-                                                    nz_p_end::Cint)::Cvoid
+    @ccall libgalahad_double.slls_solve_reverse_a_prod(data::Ptr{Ptr{Cvoid}},
+                                                       status::Ptr{Cint},
+                                                       eval_status::Ptr{Cint}, n::Cint,
+                                                       m::Cint, b::Ptr{Float64},
+                                                       x::Ptr{Float64}, z::Ptr{Float64},
+                                                       c::Ptr{Float64}, g::Ptr{Float64},
+                                                       x_stat::Ptr{Cint}, v::Ptr{Float64},
+                                                       p::Ptr{Float64}, nz_v::Ptr{Cint},
+                                                       nz_v_start::Ptr{Cint},
+                                                       nz_v_end::Ptr{Cint}, nz_p::Ptr{Cint},
+                                                       nz_p_end::Cint)::Cvoid
 end
 
 function slls_information(data, inform, status)
-    @ccall libgalahad_all.slls_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{slls_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.slls_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{slls_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function slls_terminate(data, control, inform)
-    @ccall libgalahad_all.slls_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{slls_control_type},
-                                         inform::Ptr{slls_inform_type})::Cvoid
+    @ccall libgalahad_double.slls_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{slls_control_type},
+                                            inform::Ptr{slls_inform_type})::Cvoid
 end

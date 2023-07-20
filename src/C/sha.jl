@@ -6,6 +6,7 @@ mutable struct sha_control_type
     approximation_algorithm::Cint
     dense_linear_solver::Cint
     max_sparse_degree::Cint
+    extra_differences::Cint
     space_critical::Bool
     deallocate_error_fatal::Bool
     prefix::NTuple{31,Cchar}
@@ -17,5 +18,24 @@ mutable struct sha_inform_type
     max_degree::Cint
     differences_needed::Cint
     max_reduced_degree::Cint
+    bad_row::Cint
     bad_alloc::NTuple{81,Cchar}
+end
+
+function sha_initialize(data, control, status)
+    @ccall libgalahad_double.sha_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{sha_control_type},
+                                            status::Ptr{Cint})::Cvoid
+end
+
+function sha_information(data, inform, status)
+    @ccall libgalahad_double.sha_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{sha_inform_type},
+                                             status::Ptr{Cint})::Cvoid
+end
+
+function sha_terminate(data, control, inform)
+    @ccall libgalahad_double.sha_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{sha_control_type},
+                                           inform::Ptr{sha_inform_type})::Cvoid
 end

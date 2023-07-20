@@ -110,51 +110,39 @@ mutable struct clls_inform_type
 end
 
 function clls_initialize(data, control, status)
-    @ccall libgalahad_all.clls_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{clls_control_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.clls_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{clls_control_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function clls_read_specfile(control, specfile)
-    @ccall libgalahad_all.clls_read_specfile(control::Ptr{clls_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.clls_read_specfile(control::Ptr{clls_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
 function clls_import(control, data, status, n, m, H_type, H_ne, H_row, H_col, H_ptr, L_type,
                      L_ne, L_row, L_col, L_ptr)
-    @ccall libgalahad_all.clls_import(control::Ptr{clls_control_type},
-                                      data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                      m::Cint, H_type::Ptr{Cchar}, H_ne::Cint,
-                                      H_row::Ptr{Cint}, H_col::Ptr{Cint}, H_ptr::Ptr{Cint},
-                                      L_type::Ptr{Cchar}, L_ne::Cint, L_row::Ptr{Cint},
-                                      L_col::Ptr{Cint}, L_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.clls_import(control::Ptr{clls_control_type},
+                                         data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                         m::Cint, H_type::Ptr{Cchar}, H_ne::Cint,
+                                         H_row::Ptr{Cint}, H_col::Ptr{Cint},
+                                         H_ptr::Ptr{Cint}, L_type::Ptr{Cchar}, L_ne::Cint,
+                                         L_row::Ptr{Cint}, L_col::Ptr{Cint},
+                                         L_ptr::Ptr{Cint})::Cvoid
 end
 
 function clls_reset_control(control, data, status)
-    @ccall libgalahad_all.clls_reset_control(control::Ptr{clls_control_type},
-                                             data::Ptr{Ptr{Cvoid}},
-                                             status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.clls_reset_control(control::Ptr{clls_control_type},
+                                                data::Ptr{Ptr{Cvoid}},
+                                                status::Ptr{Cint})::Cvoid
 end
 
 function clls_solve_qp(data, status, n, m, h_ne, H_val, g, f, L_ne, L_val, c_l, c_u, x_l,
                        x_u, x, c, y, z, x_stat, c_stat)
-    @ccall libgalahad_all.clls_solve_qp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                        m::Cint, h_ne::Cint, H_val::Ptr{Float64},
-                                        g::Ptr{Float64}, f::Float64, L_ne::Cint,
-                                        L_val::Ptr{Float64}, c_l::Ptr{Float64},
-                                        c_u::Ptr{Float64}, x_l::Ptr{Float64},
-                                        x_u::Ptr{Float64}, x::Ptr{Float64},
-                                        c::Ptr{Float64}, y::Ptr{Float64},
-                                        z::Ptr{Float64}, x_stat::Ptr{Cint},
-                                        c_stat::Ptr{Cint})::Cvoid
-end
-
-function clls_solve_sldqp(data, status, n, m, w, x0, g, f, L_ne, L_val, c_l, c_u, x_l, x_u,
-                          x, c, y, z, x_stat, c_stat)
-    @ccall libgalahad_all.clls_solve_sldqp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                           n::Cint, m::Cint, w::Ptr{Float64},
-                                           x0::Ptr{Float64}, g::Ptr{Float64}, f::Float64,
-                                           L_ne::Cint, L_val::Ptr{Float64},
+    @ccall libgalahad_double.clls_solve_qp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                           n::Cint, m::Cint, h_ne::Cint,
+                                           H_val::Ptr{Float64}, g::Ptr{Float64},
+                                           f::Float64, L_ne::Cint, L_val::Ptr{Float64},
                                            c_l::Ptr{Float64}, c_u::Ptr{Float64},
                                            x_l::Ptr{Float64}, x_u::Ptr{Float64},
                                            x::Ptr{Float64}, c::Ptr{Float64},
@@ -162,14 +150,27 @@ function clls_solve_sldqp(data, status, n, m, w, x0, g, f, L_ne, L_val, c_l, c_u
                                            x_stat::Ptr{Cint}, c_stat::Ptr{Cint})::Cvoid
 end
 
+function clls_solve_sldqp(data, status, n, m, w, x0, g, f, L_ne, L_val, c_l, c_u, x_l, x_u,
+                          x, c, y, z, x_stat, c_stat)
+    @ccall libgalahad_double.clls_solve_sldqp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                              n::Cint, m::Cint, w::Ptr{Float64},
+                                              x0::Ptr{Float64}, g::Ptr{Float64},
+                                              f::Float64, L_ne::Cint, L_val::Ptr{Float64},
+                                              c_l::Ptr{Float64}, c_u::Ptr{Float64},
+                                              x_l::Ptr{Float64}, x_u::Ptr{Float64},
+                                              x::Ptr{Float64}, c::Ptr{Float64},
+                                              y::Ptr{Float64}, z::Ptr{Float64},
+                                              x_stat::Ptr{Cint}, c_stat::Ptr{Cint})::Cvoid
+end
+
 function clls_information(data, inform, status)
-    @ccall libgalahad_all.clls_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{clls_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.clls_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{clls_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function clls_terminate(data, control, inform)
-    @ccall libgalahad_all.clls_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{clls_control_type},
-                                         inform::Ptr{clls_inform_type})::Cvoid
+    @ccall libgalahad_double.clls_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{clls_control_type},
+                                            inform::Ptr{clls_inform_type})::Cvoid
 end

@@ -114,51 +114,54 @@ mutable struct qpb_inform_type
 end
 
 function qpb_initialize(data, control, status)
-    @ccall libgalahad_all.qpb_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{qpb_control_type},
-                                         status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.qpb_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{qpb_control_type},
+                                            status::Ptr{Cint})::Cvoid
 end
 
 function qpb_read_specfile(control, specfile)
-    @ccall libgalahad_all.qpb_read_specfile(control::Ptr{qpb_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.qpb_read_specfile(control::Ptr{qpb_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
 function qpb_import(control, data, status, n, m, H_type, H_ne, H_row, H_col, H_ptr, A_type,
                     A_ne, A_row, A_col, A_ptr)
-    @ccall libgalahad_all.qpb_import(control::Ptr{qpb_control_type}, data::Ptr{Ptr{Cvoid}},
-                                     status::Ptr{Cint}, n::Cint, m::Cint,
-                                     H_type::Ptr{Cchar}, H_ne::Cint, H_row::Ptr{Cint},
-                                     H_col::Ptr{Cint}, H_ptr::Ptr{Cint}, A_type::Ptr{Cchar},
-                                     A_ne::Cint, A_row::Ptr{Cint}, A_col::Ptr{Cint},
-                                     A_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.qpb_import(control::Ptr{qpb_control_type},
+                                        data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                        m::Cint, H_type::Ptr{Cchar}, H_ne::Cint,
+                                        H_row::Ptr{Cint}, H_col::Ptr{Cint},
+                                        H_ptr::Ptr{Cint}, A_type::Ptr{Cchar}, A_ne::Cint,
+                                        A_row::Ptr{Cint}, A_col::Ptr{Cint},
+                                        A_ptr::Ptr{Cint})::Cvoid
 end
 
 function qpb_reset_control(control, data, status)
-    @ccall libgalahad_all.qpb_reset_control(control::Ptr{qpb_control_type},
-                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.qpb_reset_control(control::Ptr{qpb_control_type},
+                                               data::Ptr{Ptr{Cvoid}},
+                                               status::Ptr{Cint})::Cvoid
 end
 
 function qpb_solve_qp(data, status, n, m, h_ne, H_val, g, f, a_ne, A_val, c_l, c_u, x_l,
                       x_u, x, c, y, z, x_stat, c_stat)
-    @ccall libgalahad_all.qpb_solve_qp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                       m::Cint, h_ne::Cint, H_val::Ptr{Float64},
-                                       g::Ptr{Float64}, f::Float64, a_ne::Cint,
-                                       A_val::Ptr{Float64}, c_l::Ptr{Float64},
-                                       c_u::Ptr{Float64}, x_l::Ptr{Float64},
-                                       x_u::Ptr{Float64}, x::Ptr{Float64},
-                                       c::Ptr{Float64}, y::Ptr{Float64}, z::Ptr{Float64},
-                                       x_stat::Ptr{Cint}, c_stat::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.qpb_solve_qp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                          m::Cint, h_ne::Cint, H_val::Ptr{Float64},
+                                          g::Ptr{Float64}, f::Float64, a_ne::Cint,
+                                          A_val::Ptr{Float64}, c_l::Ptr{Float64},
+                                          c_u::Ptr{Float64}, x_l::Ptr{Float64},
+                                          x_u::Ptr{Float64}, x::Ptr{Float64},
+                                          c::Ptr{Float64}, y::Ptr{Float64},
+                                          z::Ptr{Float64}, x_stat::Ptr{Cint},
+                                          c_stat::Ptr{Cint})::Cvoid
 end
 
 function qpb_information(data, inform, status)
-    @ccall libgalahad_all.qpb_information(data::Ptr{Ptr{Cvoid}},
-                                          inform::Ptr{qpb_inform_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.qpb_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{qpb_inform_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function qpb_terminate(data, control, inform)
-    @ccall libgalahad_all.qpb_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{qpb_control_type},
-                                        inform::Ptr{qpb_inform_type})::Cvoid
+    @ccall libgalahad_double.qpb_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{qpb_control_type},
+                                           inform::Ptr{qpb_inform_type})::Cvoid
 end

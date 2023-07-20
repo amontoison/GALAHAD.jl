@@ -110,54 +110,55 @@ mutable struct bqpb_inform_type
 end
 
 function bqpb_initialize(data, control, status)
-    @ccall libgalahad_all.bqpb_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{bqpb_control_type},
-                                          status::Ptr{Cint})::Cvoid
-end
-
-function bqpb_read_specfile(control, specfile)
-    @ccall libgalahad_all.bqpb_read_specfile(control::Ptr{bqpb_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
-end
-
-function bqpb_import(control, data, status, n, H_type, H_ne, H_row, H_col, H_ptr)
-    @ccall libgalahad_all.bqpb_import(control::Ptr{bqpb_control_type},
-                                      data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                      H_type::Ptr{Cchar}, H_ne::Cint, H_row::Ptr{Cint},
-                                      H_col::Ptr{Cint}, H_ptr::Ptr{Cint})::Cvoid
-end
-
-function bqpb_reset_control(control, data, status)
-    @ccall libgalahad_all.bqpb_reset_control(control::Ptr{bqpb_control_type},
-                                             data::Ptr{Ptr{Cvoid}},
+    @ccall libgalahad_double.bqpb_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{bqpb_control_type},
                                              status::Ptr{Cint})::Cvoid
 end
 
-function bqpb_solve_qp(data, status, n, h_ne, H_val, g, f, x_l, x_u, x, z, x_stat)
-    @ccall libgalahad_all.bqpb_solve_qp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                        h_ne::Cint, H_val::Ptr{Float64}, g::Ptr{Float64},
-                                        f::Float64, x_l::Ptr{Float64}, x_u::Ptr{Float64},
-                                        x::Ptr{Float64}, z::Ptr{Float64},
-                                        x_stat::Ptr{Cint})::Cvoid
+function bqpb_read_specfile(control, specfile)
+    @ccall libgalahad_double.bqpb_read_specfile(control::Ptr{bqpb_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
-function bqpb_solve_sldqp(data, status, n, w, x0, g, f, x_l, x_u, x, z, x_stat)
-    @ccall libgalahad_all.bqpb_solve_sldqp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                           n::Cint, w::Ptr{Float64}, x0::Ptr{Float64},
+function bqpb_import(control, data, status, n, H_type, H_ne, H_row, H_col, H_ptr)
+    @ccall libgalahad_double.bqpb_import(control::Ptr{bqpb_control_type},
+                                         data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                         H_type::Ptr{Cchar}, H_ne::Cint, H_row::Ptr{Cint},
+                                         H_col::Ptr{Cint}, H_ptr::Ptr{Cint})::Cvoid
+end
+
+function bqpb_reset_control(control, data, status)
+    @ccall libgalahad_double.bqpb_reset_control(control::Ptr{bqpb_control_type},
+                                                data::Ptr{Ptr{Cvoid}},
+                                                status::Ptr{Cint})::Cvoid
+end
+
+function bqpb_solve_qp(data, status, n, h_ne, H_val, g, f, x_l, x_u, x, z, x_stat)
+    @ccall libgalahad_double.bqpb_solve_qp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                           n::Cint, h_ne::Cint, H_val::Ptr{Float64},
                                            g::Ptr{Float64}, f::Float64,
                                            x_l::Ptr{Float64}, x_u::Ptr{Float64},
                                            x::Ptr{Float64}, z::Ptr{Float64},
                                            x_stat::Ptr{Cint})::Cvoid
 end
 
+function bqpb_solve_sldqp(data, status, n, w, x0, g, f, x_l, x_u, x, z, x_stat)
+    @ccall libgalahad_double.bqpb_solve_sldqp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                              n::Cint, w::Ptr{Float64}, x0::Ptr{Float64},
+                                              g::Ptr{Float64}, f::Float64,
+                                              x_l::Ptr{Float64}, x_u::Ptr{Float64},
+                                              x::Ptr{Float64}, z::Ptr{Float64},
+                                              x_stat::Ptr{Cint})::Cvoid
+end
+
 function bqpb_information(data, inform, status)
-    @ccall libgalahad_all.bqpb_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{bqpb_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.bqpb_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{bqpb_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function bqpb_terminate(data, control, inform)
-    @ccall libgalahad_all.bqpb_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{bqpb_control_type},
-                                         inform::Ptr{bqpb_inform_type})::Cvoid
+    @ccall libgalahad_double.bqpb_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{bqpb_control_type},
+                                            inform::Ptr{bqpb_inform_type})::Cvoid
 end

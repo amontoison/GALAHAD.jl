@@ -30,3 +30,21 @@ mutable struct lms_inform_type
     bad_alloc::NTuple{81,Cchar}
     time::lms_time_type
 end
+
+function lms_initialize(data, control, status)
+    @ccall libgalahad_double.lms_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{lms_control_type},
+                                            status::Ptr{Cint})::Cvoid
+end
+
+function lms_information(data, inform, status)
+    @ccall libgalahad_double.lms_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{lms_inform_type},
+                                             status::Ptr{Cint})::Cvoid
+end
+
+function lms_terminate(data, control, inform)
+    @ccall libgalahad_double.lms_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{lms_control_type},
+                                           inform::Ptr{lms_inform_type})::Cvoid
+end
