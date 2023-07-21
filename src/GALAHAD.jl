@@ -1,8 +1,10 @@
 module GALAHAD
 
+using Libdl
+
 if haskey(ENV, "JULIA_GALAHAD_LIBRARY_PATH")
-  const libsmumps = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "libgalahad_single.$dlext")
-  const libdmumps = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "libgalahad_double.$dlext")
+  const libgalahad_single = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "libgalahad_single.$dlext")
+  const libgalahad_double = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "libgalahad_double.$dlext")
   const GALAHAD_INSTALLATION = "CUSTOM"
 else
   # using GALAHAD_jll

@@ -1,3 +1,5 @@
+export sls_control_type
+
 mutable struct sls_control_type
     f_indexing::Bool
     error::Cint
@@ -50,7 +52,10 @@ mutable struct sls_control_type
     out_of_core_indefinite_file::NTuple{401,Cchar}
     out_of_core_restart_file::NTuple{501,Cchar}
     prefix::NTuple{31,Cchar}
+    sls_control_type() = new()
 end
+
+export sls_time_type
 
 mutable struct sls_time_type
     total::Float64
@@ -69,7 +74,10 @@ mutable struct sls_time_type
     clock_analyse_external::Float64
     clock_factorize_external::Float64
     clock_solve_external::Float64
+    sls_time_type() = new()
 end
+
+export sls_inform_type
 
 mutable struct sls_inform_type
     status::Cint
@@ -149,42 +157,57 @@ mutable struct sls_inform_type
     wsmp_dparm::NTuple{64,Float64}
     mpi_ierr::Cint
     lapack_error::Cint
+    sls_inform_type() = new()
 end
+
+export sls_initialize
 
 function sls_initialize(solver, data, control, status)
     @ccall libgalahad_double.sls_initialize(solver::Ptr{Cchar}, data::Ptr{Ptr{Cvoid}},
-                                            control::Ptr{sls_control_type},
+                                            control::Ref{sls_control_type},
                                             status::Ptr{Cint})::Cvoid
 end
 
+export sls_read_specfile
+
 function sls_read_specfile(control, specfile)
-    @ccall libgalahad_double.sls_read_specfile(control::Ptr{sls_control_type},
+    @ccall libgalahad_double.sls_read_specfile(control::Ref{sls_control_type},
                                                specfile::Ptr{Cchar})::Cvoid
 end
 
+export sls_analyse_matrix
+
 function sls_analyse_matrix(control, data, status, n, type, ne, row, col, ptr)
-    @ccall libgalahad_double.sls_analyse_matrix(control::Ptr{sls_control_type},
+    @ccall libgalahad_double.sls_analyse_matrix(control::Ref{sls_control_type},
                                                 data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
                                                 n::Cint, type::Ptr{Cchar}, ne::Cint,
                                                 row::Ptr{Cint}, col::Ptr{Cint},
                                                 ptr::Ptr{Cint})::Cvoid
 end
 
+export sls_reset_control
+
 function sls_reset_control(control, data, status)
-    @ccall libgalahad_double.sls_reset_control(control::Ptr{sls_control_type},
+    @ccall libgalahad_double.sls_reset_control(control::Ref{sls_control_type},
                                                data::Ptr{Ptr{Cvoid}},
                                                status::Ptr{Cint})::Cvoid
 end
+
+export sls_factorize_matrix
 
 function sls_factorize_matrix(data, status, ne, val)
     @ccall libgalahad_double.sls_factorize_matrix(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
                                                   ne::Cint, val::Ptr{Float64})::Cvoid
 end
 
+export sls_solve_system
+
 function sls_solve_system(data, status, n, sol)
     @ccall libgalahad_double.sls_solve_system(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
                                               n::Cint, sol::Ptr{Float64})::Cvoid
 end
+
+export sls_partial_solve_system
 
 function sls_partial_solve_system(part, data, status, n, sol)
     @ccall libgalahad_double.sls_partial_solve_system(part::Ptr{Cchar},
@@ -193,14 +216,18 @@ function sls_partial_solve_system(part, data, status, n, sol)
                                                       sol::Ptr{Float64})::Cvoid
 end
 
+export sls_information
+
 function sls_information(data, inform, status)
     @ccall libgalahad_double.sls_information(data::Ptr{Ptr{Cvoid}},
-                                             inform::Ptr{sls_inform_type},
+                                             inform::Ref{sls_inform_type},
                                              status::Ptr{Cint})::Cvoid
 end
 
+export sls_terminate
+
 function sls_terminate(data, control, inform)
     @ccall libgalahad_double.sls_terminate(data::Ptr{Ptr{Cvoid}},
-                                           control::Ptr{sls_control_type},
-                                           inform::Ptr{sls_inform_type})::Cvoid
+                                           control::Ref{sls_control_type},
+                                           inform::Ref{sls_inform_type})::Cvoid
 end
