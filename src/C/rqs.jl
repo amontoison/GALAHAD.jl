@@ -69,59 +69,60 @@ mutable struct rqs_inform_type
 end
 
 function rqs_initialize(data, control, status)
-    @ccall libgalahad_all.rqs_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{rqs_control_type},
-                                         status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.rqs_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{rqs_control_type},
+                                            status::Ptr{Cint})::Cvoid
 end
 
 function rqs_read_specfile(control, specfile)
-    @ccall libgalahad_all.rqs_read_specfile(control::Ptr{rqs_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.rqs_read_specfile(control::Ptr{rqs_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
 function rqs_import(control, data, status, n, H_type, H_ne, H_row, H_col, H_ptr)
-    @ccall libgalahad_all.rqs_import(control::Ptr{rqs_control_type}, data::Ptr{Ptr{Cvoid}},
-                                     status::Ptr{Cint}, n::Cint, H_type::Ptr{Cchar},
-                                     H_ne::Cint, H_row::Ptr{Cint}, H_col::Ptr{Cint},
-                                     H_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.rqs_import(control::Ptr{rqs_control_type},
+                                        data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                        H_type::Ptr{Cchar}, H_ne::Cint, H_row::Ptr{Cint},
+                                        H_col::Ptr{Cint}, H_ptr::Ptr{Cint})::Cvoid
 end
 
 function rqs_import_m(data, status, n, M_type, M_ne, M_row, M_col, M_ptr)
-    @ccall libgalahad_all.rqs_import_m(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                       M_type::Ptr{Cchar}, M_ne::Cint, M_row::Ptr{Cint},
-                                       M_col::Ptr{Cint}, M_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.rqs_import_m(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                          M_type::Ptr{Cchar}, M_ne::Cint, M_row::Ptr{Cint},
+                                          M_col::Ptr{Cint}, M_ptr::Ptr{Cint})::Cvoid
 end
 
 function rqs_import_a(data, status, m, A_type, A_ne, A_row, A_col, A_ptr)
-    @ccall libgalahad_all.rqs_import_a(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, m::Cint,
-                                       A_type::Ptr{Cchar}, A_ne::Cint, A_row::Ptr{Cint},
-                                       A_col::Ptr{Cint}, A_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.rqs_import_a(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, m::Cint,
+                                          A_type::Ptr{Cchar}, A_ne::Cint, A_row::Ptr{Cint},
+                                          A_col::Ptr{Cint}, A_ptr::Ptr{Cint})::Cvoid
 end
 
 function rqs_reset_control(control, data, status)
-    @ccall libgalahad_all.rqs_reset_control(control::Ptr{rqs_control_type},
-                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.rqs_reset_control(control::Ptr{rqs_control_type},
+                                               data::Ptr{Ptr{Cvoid}},
+                                               status::Ptr{Cint})::Cvoid
 end
 
 function rqs_solve_problem(data, status, n, power, weight, f, c, H_ne, H_val, x, M_ne,
                            M_val, m, A_ne, A_val, y)
-    @ccall libgalahad_all.rqs_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                            n::Cint, power::Float64, weight::Float64,
-                                            f::Float64, c::Ptr{Float64}, H_ne::Cint,
-                                            H_val::Ptr{Float64}, x::Ptr{Float64},
-                                            M_ne::Cint, M_val::Ptr{Float64}, m::Cint,
-                                            A_ne::Cint, A_val::Ptr{Float64},
-                                            y::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.rqs_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                               n::Cint, power::Float64, weight::Float64,
+                                               f::Float64, c::Ptr{Float64}, H_ne::Cint,
+                                               H_val::Ptr{Float64}, x::Ptr{Float64},
+                                               M_ne::Cint, M_val::Ptr{Float64}, m::Cint,
+                                               A_ne::Cint, A_val::Ptr{Float64},
+                                               y::Ptr{Float64})::Cvoid
 end
 
 function rqs_information(data, inform, status)
-    @ccall libgalahad_all.rqs_information(data::Ptr{Ptr{Cvoid}},
-                                          inform::Ptr{rqs_inform_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.rqs_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{rqs_inform_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function rqs_terminate(data, control, inform)
-    @ccall libgalahad_all.rqs_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{rqs_control_type},
-                                        inform::Ptr{rqs_inform_type})::Cvoid
+    @ccall libgalahad_double.rqs_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{rqs_control_type},
+                                           inform::Ptr{rqs_inform_type})::Cvoid
 end

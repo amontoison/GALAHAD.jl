@@ -68,62 +68,64 @@ mutable struct psls_inform_type
 end
 
 function psls_initialize(data, control, status)
-    @ccall libgalahad_all.psls_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{psls_control_type},
-                                          status::Ptr{Cint})::Cvoid
-end
-
-function psls_read_specfile(control, specfile)
-    @ccall libgalahad_all.psls_read_specfile(control::Ptr{psls_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
-end
-
-function psls_import(control, data, status, n, type, ne, row, col, ptr)
-    @ccall libgalahad_all.psls_import(control::Ptr{psls_control_type},
-                                      data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                      type::Ptr{Cchar}, ne::Cint, row::Ptr{Cint},
-                                      col::Ptr{Cint}, ptr::Ptr{Cint})::Cvoid
-end
-
-function psls_reset_control(control, data, status)
-    @ccall libgalahad_all.psls_reset_control(control::Ptr{psls_control_type},
-                                             data::Ptr{Ptr{Cvoid}},
+    @ccall libgalahad_double.psls_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{psls_control_type},
                                              status::Ptr{Cint})::Cvoid
 end
 
+function psls_read_specfile(control, specfile)
+    @ccall libgalahad_double.psls_read_specfile(control::Ptr{psls_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
+end
+
+function psls_import(control, data, status, n, type, ne, row, col, ptr)
+    @ccall libgalahad_double.psls_import(control::Ptr{psls_control_type},
+                                         data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                         type::Ptr{Cchar}, ne::Cint, row::Ptr{Cint},
+                                         col::Ptr{Cint}, ptr::Ptr{Cint})::Cvoid
+end
+
+function psls_reset_control(control, data, status)
+    @ccall libgalahad_double.psls_reset_control(control::Ptr{psls_control_type},
+                                                data::Ptr{Ptr{Cvoid}},
+                                                status::Ptr{Cint})::Cvoid
+end
+
 function psls_form_preconditioner(data, status, ne, val)
-    @ccall libgalahad_all.psls_form_preconditioner(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                                   ne::Cint, val::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.psls_form_preconditioner(data::Ptr{Ptr{Cvoid}},
+                                                      status::Ptr{Cint}, ne::Cint,
+                                                      val::Ptr{Float64})::Cvoid
 end
 
 function psls_form_subset_preconditioner(data, status, ne, val, n_sub, sub)
-    @ccall libgalahad_all.psls_form_subset_preconditioner(data::Ptr{Ptr{Cvoid}},
-                                                          status::Ptr{Cint}, ne::Cint,
-                                                          val::Ptr{Float64}, n_sub::Cint,
-                                                          sub::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.psls_form_subset_preconditioner(data::Ptr{Ptr{Cvoid}},
+                                                             status::Ptr{Cint}, ne::Cint,
+                                                             val::Ptr{Float64},
+                                                             n_sub::Cint,
+                                                             sub::Ptr{Cint})::Cvoid
 end
 
 function psls_update_preconditioner(data, status, ne, val, n_del, del)
-    @ccall libgalahad_all.psls_update_preconditioner(data::Ptr{Ptr{Cvoid}},
-                                                     status::Ptr{Cint}, ne::Cint,
-                                                     val::Ptr{Float64}, n_del::Cint,
-                                                     del::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.psls_update_preconditioner(data::Ptr{Ptr{Cvoid}},
+                                                        status::Ptr{Cint}, ne::Cint,
+                                                        val::Ptr{Float64}, n_del::Cint,
+                                                        del::Ptr{Cint})::Cvoid
 end
 
 function psls_apply_preconditioner(data, status, n, sol)
-    @ccall libgalahad_all.psls_apply_preconditioner(data::Ptr{Ptr{Cvoid}},
-                                                    status::Ptr{Cint}, n::Cint,
-                                                    sol::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.psls_apply_preconditioner(data::Ptr{Ptr{Cvoid}},
+                                                       status::Ptr{Cint}, n::Cint,
+                                                       sol::Ptr{Float64})::Cvoid
 end
 
 function psls_information(data, inform, status)
-    @ccall libgalahad_all.psls_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{psls_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.psls_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{psls_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function psls_terminate(data, control, inform)
-    @ccall libgalahad_all.psls_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{psls_control_type},
-                                         inform::Ptr{psls_inform_type})::Cvoid
+    @ccall libgalahad_double.psls_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{psls_control_type},
+                                            inform::Ptr{psls_inform_type})::Cvoid
 end

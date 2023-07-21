@@ -90,49 +90,51 @@ mutable struct wcp_inform_type
 end
 
 function wcp_initialize(data, control, status)
-    @ccall libgalahad_all.wcp_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{wcp_control_type},
-                                         status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.wcp_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{wcp_control_type},
+                                            status::Ptr{Cint})::Cvoid
 end
 
 function wcp_read_specfile(control, specfile)
-    @ccall libgalahad_all.wcp_read_specfile(control::Ptr{wcp_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.wcp_read_specfile(control::Ptr{wcp_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
 function wcp_import(control, data, status, n, m, A_type, A_ne, A_row, A_col, A_ptr)
-    @ccall libgalahad_all.wcp_import(control::Ptr{wcp_control_type}, data::Ptr{Ptr{Cvoid}},
-                                     status::Ptr{Cint}, n::Cint, m::Cint,
-                                     A_type::Ptr{Cchar}, A_ne::Cint, A_row::Ptr{Cint},
-                                     A_col::Ptr{Cint}, A_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.wcp_import(control::Ptr{wcp_control_type},
+                                        data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                        m::Cint, A_type::Ptr{Cchar}, A_ne::Cint,
+                                        A_row::Ptr{Cint}, A_col::Ptr{Cint},
+                                        A_ptr::Ptr{Cint})::Cvoid
 end
 
 function wcp_reset_control(control, data, status)
-    @ccall libgalahad_all.wcp_reset_control(control::Ptr{wcp_control_type},
-                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.wcp_reset_control(control::Ptr{wcp_control_type},
+                                               data::Ptr{Ptr{Cvoid}},
+                                               status::Ptr{Cint})::Cvoid
 end
 
 function wcp_find_wcp(data, status, n, m, g, a_ne, A_val, c_l, c_u, x_l, x_u, x, c, y_l,
                       y_u, z_l, z_u, x_stat, c_stat)
-    @ccall libgalahad_all.wcp_find_wcp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
-                                       m::Cint, g::Ptr{Float64}, a_ne::Cint,
-                                       A_val::Ptr{Float64}, c_l::Ptr{Float64},
-                                       c_u::Ptr{Float64}, x_l::Ptr{Float64},
-                                       x_u::Ptr{Float64}, x::Ptr{Float64},
-                                       c::Ptr{Float64}, y_l::Ptr{Float64},
-                                       y_u::Ptr{Float64}, z_l::Ptr{Float64},
-                                       z_u::Ptr{Float64}, x_stat::Ptr{Cint},
-                                       c_stat::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.wcp_find_wcp(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                          m::Cint, g::Ptr{Float64}, a_ne::Cint,
+                                          A_val::Ptr{Float64}, c_l::Ptr{Float64},
+                                          c_u::Ptr{Float64}, x_l::Ptr{Float64},
+                                          x_u::Ptr{Float64}, x::Ptr{Float64},
+                                          c::Ptr{Float64}, y_l::Ptr{Float64},
+                                          y_u::Ptr{Float64}, z_l::Ptr{Float64},
+                                          z_u::Ptr{Float64}, x_stat::Ptr{Cint},
+                                          c_stat::Ptr{Cint})::Cvoid
 end
 
 function wcp_information(data, inform, status)
-    @ccall libgalahad_all.wcp_information(data::Ptr{Ptr{Cvoid}},
-                                          inform::Ptr{wcp_inform_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.wcp_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{wcp_inform_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function wcp_terminate(data, control, inform)
-    @ccall libgalahad_all.wcp_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{wcp_control_type},
-                                        inform::Ptr{wcp_inform_type})::Cvoid
+    @ccall libgalahad_double.wcp_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{wcp_control_type},
+                                           inform::Ptr{wcp_inform_type})::Cvoid
 end

@@ -38,37 +38,37 @@ mutable struct glrt_inform_type
 end
 
 function glrt_initialize(data, control, status)
-    @ccall libgalahad_all.glrt_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{glrt_control_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.glrt_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{glrt_control_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function glrt_read_specfile(control, specfile)
-    @ccall libgalahad_all.glrt_read_specfile(control::Ptr{glrt_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.glrt_read_specfile(control::Ptr{glrt_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
 function glrt_import_control(control, data, status)
-    @ccall libgalahad_all.glrt_import_control(control::Ptr{glrt_control_type},
-                                              data::Ptr{Ptr{Cvoid}},
-                                              status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.glrt_import_control(control::Ptr{glrt_control_type},
+                                                 data::Ptr{Ptr{Cvoid}},
+                                                 status::Ptr{Cint})::Cvoid
 end
 
 function glrt_solve_problem(data, status, n, power, weight, x, r, vector)
-    @ccall libgalahad_all.glrt_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                             n::Cint, power::Float64, weight::Float64,
-                                             x::Ptr{Float64}, r::Ptr{Float64},
-                                             vector::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.glrt_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                                n::Cint, power::Float64, weight::Float64,
+                                                x::Ptr{Float64}, r::Ptr{Float64},
+                                                vector::Ptr{Float64})::Cvoid
 end
 
 function glrt_information(data, inform, status)
-    @ccall libgalahad_all.glrt_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{glrt_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.glrt_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{glrt_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function glrt_terminate(data, control, inform)
-    @ccall libgalahad_all.glrt_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{glrt_control_type},
-                                         inform::Ptr{glrt_inform_type})::Cvoid
+    @ccall libgalahad_double.glrt_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{glrt_control_type},
+                                            inform::Ptr{glrt_inform_type})::Cvoid
 end

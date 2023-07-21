@@ -1,5 +1,16 @@
 module GALAHAD
 
+using Libdl
+
+if haskey(ENV, "JULIA_GALAHAD_LIBRARY_PATH")
+  const libgalahad_single = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "libgalahad_single.$dlext")
+  const libgalahad_double = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "libgalahad_double.$dlext")
+  const GALAHAD_INSTALLATION = "CUSTOM"
+else
+  # using GALAHAD_jll
+  # const GALAHAD_INSTALLATION = "YGGDRASIL"
+end
+
 galahad_version() = v"5.0.0"
 
 # packages without dependencies.

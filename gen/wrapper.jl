@@ -10,22 +10,23 @@ function wrapper(name::String, headers::Vector{String}, optimized::Bool; targets
   @info "Wrapping $name"
 
   cd(@__DIR__)
-  include_dir = joinpath(ENV["GALAHAD"], "include")
+  include_dir = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "..", "include")
 
   options = load_options(joinpath(@__DIR__, "galahad.toml"))
-  options["general"]["library_name"] = "libgalahad_all"
+  options["general"]["library_name"] = "libgalahad_double"
   # options["general"]["extract_c_comment_style"] = "doxygen"
   options["general"]["output_file_path"] = joinpath("..", "src", "C", "$(name).jl")
   optimized && (options["general"]["output_ignorelist"] = ["real_wp_", "real_sp_"])
   args = get_default_args()
-  push!(args, "-I$include_dir -fparse-all-comments")
+  push!(args, "-I$include_dir")
+  push!(args, "-DGALAHAD_DOUBLE")
   
   ctx = create_context(headers, args, options)
   build!(ctx, BUILDSTAGE_NO_PRINTING)
 
   # Only keep the wrapped headers because the dependencies are already wrapped with other headers.
   replace!(get_nodes(ctx.dag)) do node
-      path = normpath(Clang.get_filename(node.cursor))
+      path = Clang.get_filename(node.cursor)
       should_wrap = any(targets) do target
           occursin(target, path)
       end
@@ -45,7 +46,7 @@ function wrapper(name::String, headers::Vector{String}, optimized::Bool; targets
 end
 
 function main(name::String="all"; optimized::Bool=false)
-  galahad = joinpath(ENV["GALAHAD"], "include")
+  galahad = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "..", "include")
 
   (name == "all" || name == "arc")      && wrapper("arc", ["$galahad/galahad_arc.h"], optimized)
   (name == "all" || name == "bgo")      && wrapper("bgo", ["$galahad/galahad_bgo.h"], optimized)
@@ -108,7 +109,7 @@ if abspath(PROGRAM_FILE) == @__FILE__
   main()
 end
 
-# galahad = joinpath(ENV["GALAHAD"], "include")
+# galahad = joinpath(ENV["JULIA_GALAHAD_LIBRARY_PATH"], "..", "include")
 # headers = readdir(galahad)
 # for header in sort(headers)
 #   res = split(header, ['_', '.'])

@@ -23,3 +23,21 @@ mutable struct convert_inform_type
     bad_alloc::NTuple{81,Cchar}
     time::convert_time_type
 end
+
+function convert_initialize(data, control, status)
+    @ccall libgalahad_double.convert_initialize(data::Ptr{Ptr{Cvoid}},
+                                                control::Ptr{convert_control_type},
+                                                status::Ptr{Cint})::Cvoid
+end
+
+function convert_information(data, inform, status)
+    @ccall libgalahad_double.convert_information(data::Ptr{Ptr{Cvoid}},
+                                                 inform::Ptr{convert_inform_type},
+                                                 status::Ptr{Cint})::Cvoid
+end
+
+function convert_terminate(data, control, inform)
+    @ccall libgalahad_double.convert_terminate(data::Ptr{Ptr{Cvoid}},
+                                               control::Ptr{convert_control_type},
+                                               inform::Ptr{convert_inform_type})::Cvoid
+end

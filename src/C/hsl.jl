@@ -351,7 +351,7 @@ end
 mutable struct mc68_control
     f_array_in::Cint
     f_array_out::Cint
-    min_l_workspace::Clong
+    min_l_workspace::Cint
     lp::Cint
     wp::Cint
     mp::Cint

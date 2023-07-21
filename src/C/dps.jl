@@ -48,64 +48,68 @@ mutable struct dps_inform_type
 end
 
 function dps_initialize(data, control, status)
-    @ccall libgalahad_all.dps_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{dps_control_type},
-                                         status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.dps_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{dps_control_type},
+                                            status::Ptr{Cint})::Cvoid
 end
 
 function dps_read_specfile(control, specfile)
-    @ccall libgalahad_all.dps_read_specfile(control::Ptr{dps_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.dps_read_specfile(control::Ptr{dps_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
 function dps_import(control, data, status, n, H_type, ne, H_row, H_col, H_ptr)
-    @ccall libgalahad_all.dps_import(control::Ptr{dps_control_type}, data::Ptr{Ptr{Cvoid}},
-                                     status::Ptr{Cint}, n::Cint, H_type::Ptr{Cchar},
-                                     ne::Cint, H_row::Ptr{Cint}, H_col::Ptr{Cint},
-                                     H_ptr::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.dps_import(control::Ptr{dps_control_type},
+                                        data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                        H_type::Ptr{Cchar}, ne::Cint, H_row::Ptr{Cint},
+                                        H_col::Ptr{Cint}, H_ptr::Ptr{Cint})::Cvoid
 end
 
 function dps_reset_control(control, data, status)
-    @ccall libgalahad_all.dps_reset_control(control::Ptr{dps_control_type},
-                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.dps_reset_control(control::Ptr{dps_control_type},
+                                               data::Ptr{Ptr{Cvoid}},
+                                               status::Ptr{Cint})::Cvoid
 end
 
 function dps_solve_tr_problem(data, status, n, ne, H_val, c, f, radius, x)
-    @ccall libgalahad_all.dps_solve_tr_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                               n::Cint, ne::Cint, H_val::Ptr{Float64},
-                                               c::Ptr{Float64}, f::Float64,
-                                               radius::Float64, x::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.dps_solve_tr_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                                  n::Cint, ne::Cint, H_val::Ptr{Float64},
+                                                  c::Ptr{Float64}, f::Float64,
+                                                  radius::Float64, x::Ptr{Float64})::Cvoid
 end
 
 function dps_solve_rq_problem(data, status, n, ne, H_val, c, f, power, weight, x)
-    @ccall libgalahad_all.dps_solve_rq_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                               n::Cint, ne::Cint, H_val::Ptr{Float64},
-                                               c::Ptr{Float64}, f::Float64,
-                                               power::Float64, weight::Float64,
-                                               x::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.dps_solve_rq_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                                  n::Cint, ne::Cint, H_val::Ptr{Float64},
+                                                  c::Ptr{Float64}, f::Float64,
+                                                  power::Float64, weight::Float64,
+                                                  x::Ptr{Float64})::Cvoid
 end
 
 function dps_resolve_tr_problem(data, status, n, c, f, radius, x)
-    @ccall libgalahad_all.dps_resolve_tr_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                                 n::Cint, c::Ptr{Float64}, f::Float64,
-                                                 radius::Float64, x::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.dps_resolve_tr_problem(data::Ptr{Ptr{Cvoid}},
+                                                    status::Ptr{Cint}, n::Cint,
+                                                    c::Ptr{Float64}, f::Float64,
+                                                    radius::Float64,
+                                                    x::Ptr{Float64})::Cvoid
 end
 
 function dps_resolve_rq_problem(data, status, n, c, f, power, weight, x)
-    @ccall libgalahad_all.dps_resolve_rq_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                                 n::Cint, c::Ptr{Float64}, f::Float64,
-                                                 power::Float64, weight::Float64,
-                                                 x::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.dps_resolve_rq_problem(data::Ptr{Ptr{Cvoid}},
+                                                    status::Ptr{Cint}, n::Cint,
+                                                    c::Ptr{Float64}, f::Float64,
+                                                    power::Float64, weight::Float64,
+                                                    x::Ptr{Float64})::Cvoid
 end
 
 function dps_information(data, inform, status)
-    @ccall libgalahad_all.dps_information(data::Ptr{Ptr{Cvoid}},
-                                          inform::Ptr{dps_inform_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.dps_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{dps_inform_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function dps_terminate(data, control, inform)
-    @ccall libgalahad_all.dps_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{dps_control_type},
-                                        inform::Ptr{dps_inform_type})::Cvoid
+    @ccall libgalahad_double.dps_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{dps_control_type},
+                                           inform::Ptr{dps_inform_type})::Cvoid
 end

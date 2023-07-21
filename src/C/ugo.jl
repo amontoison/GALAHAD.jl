@@ -47,49 +47,50 @@ mutable struct ugo_inform_type
 end
 
 function ugo_initialize(data, control, status)
-    @ccall libgalahad_all.ugo_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{ugo_control_type},
-                                         status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.ugo_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{ugo_control_type},
+                                            status::Ptr{Cint})::Cvoid
 end
 
 function ugo_read_specfile(control, specfile)
-    @ccall libgalahad_all.ugo_read_specfile(control::Ptr{ugo_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.ugo_read_specfile(control::Ptr{ugo_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
 function ugo_import(control, data, status, x_l, x_u)
-    @ccall libgalahad_all.ugo_import(control::Ptr{ugo_control_type}, data::Ptr{Ptr{Cvoid}},
-                                     status::Ptr{Cint}, x_l::Ptr{Float64},
-                                     x_u::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.ugo_import(control::Ptr{ugo_control_type},
+                                        data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                        x_l::Ptr{Float64}, x_u::Ptr{Float64})::Cvoid
 end
 
 function ugo_reset_control(control, data, status)
-    @ccall libgalahad_all.ugo_reset_control(control::Ptr{ugo_control_type},
-                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.ugo_reset_control(control::Ptr{ugo_control_type},
+                                               data::Ptr{Ptr{Cvoid}},
+                                               status::Ptr{Cint})::Cvoid
 end
 
 function ugo_solve_direct(data, userdata, status, x, f, g, h, eval_fgh)
-    @ccall libgalahad_all.ugo_solve_direct(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
-                                           status::Ptr{Cint}, x::Ptr{Float64},
-                                           f::Ptr{Float64}, g::Ptr{Float64},
-                                           h::Ptr{Float64}, eval_fgh::Ptr{Cvoid})::Cvoid
+    @ccall libgalahad_double.ugo_solve_direct(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
+                                              status::Ptr{Cint}, x::Ptr{Float64},
+                                              f::Ptr{Float64}, g::Ptr{Float64},
+                                              h::Ptr{Float64}, eval_fgh::Ptr{Cvoid})::Cvoid
 end
 
 function ugo_solve_reverse(data, status, eval_status, x, f, g, h)
-    @ccall libgalahad_all.ugo_solve_reverse(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                            eval_status::Ptr{Cint}, x::Ptr{Float64},
-                                            f::Ptr{Float64}, g::Ptr{Float64},
-                                            h::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.ugo_solve_reverse(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                               eval_status::Ptr{Cint}, x::Ptr{Float64},
+                                               f::Ptr{Float64}, g::Ptr{Float64},
+                                               h::Ptr{Float64})::Cvoid
 end
 
 function ugo_information(data, inform, status)
-    @ccall libgalahad_all.ugo_information(data::Ptr{Ptr{Cvoid}},
-                                          inform::Ptr{ugo_inform_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.ugo_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{ugo_inform_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function ugo_terminate(data, control, inform)
-    @ccall libgalahad_all.ugo_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{ugo_control_type},
-                                        inform::Ptr{ugo_inform_type})::Cvoid
+    @ccall libgalahad_double.ugo_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{ugo_control_type},
+                                           inform::Ptr{ugo_inform_type})::Cvoid
 end

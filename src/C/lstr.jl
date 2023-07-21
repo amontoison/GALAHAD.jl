@@ -38,37 +38,37 @@ mutable struct lstr_inform_type
 end
 
 function lstr_initialize(data, control, status)
-    @ccall libgalahad_all.lstr_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{lstr_control_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.lstr_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{lstr_control_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function lstr_read_specfile(control, specfile)
-    @ccall libgalahad_all.lstr_read_specfile(control::Ptr{lstr_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.lstr_read_specfile(control::Ptr{lstr_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
 function lstr_import_control(control, data, status)
-    @ccall libgalahad_all.lstr_import_control(control::Ptr{lstr_control_type},
-                                              data::Ptr{Ptr{Cvoid}},
-                                              status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.lstr_import_control(control::Ptr{lstr_control_type},
+                                                 data::Ptr{Ptr{Cvoid}},
+                                                 status::Ptr{Cint})::Cvoid
 end
 
 function lstr_solve_problem(data, status, m, n, radius, x, u, v)
-    @ccall libgalahad_all.lstr_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                             m::Cint, n::Cint, radius::Float64,
-                                             x::Ptr{Float64}, u::Ptr{Float64},
-                                             v::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.lstr_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                                m::Cint, n::Cint, radius::Float64,
+                                                x::Ptr{Float64}, u::Ptr{Float64},
+                                                v::Ptr{Float64})::Cvoid
 end
 
 function lstr_information(data, inform, status)
-    @ccall libgalahad_all.lstr_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{lstr_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.lstr_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{lstr_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function lstr_terminate(data, control, inform)
-    @ccall libgalahad_all.lstr_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{lstr_control_type},
-                                         inform::Ptr{lstr_inform_type})::Cvoid
+    @ccall libgalahad_double.lstr_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{lstr_control_type},
+                                            inform::Ptr{lstr_inform_type})::Cvoid
 end

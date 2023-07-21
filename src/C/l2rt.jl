@@ -39,38 +39,38 @@ mutable struct l2rt_inform_type
 end
 
 function l2rt_initialize(data, control, status)
-    @ccall libgalahad_all.l2rt_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{l2rt_control_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.l2rt_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{l2rt_control_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function l2rt_read_specfile(control, specfile)
-    @ccall libgalahad_all.l2rt_read_specfile(control::Ptr{l2rt_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.l2rt_read_specfile(control::Ptr{l2rt_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
 function l2rt_import_control(control, data, status)
-    @ccall libgalahad_all.l2rt_import_control(control::Ptr{l2rt_control_type},
-                                              data::Ptr{Ptr{Cvoid}},
-                                              status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.l2rt_import_control(control::Ptr{l2rt_control_type},
+                                                 data::Ptr{Ptr{Cvoid}},
+                                                 status::Ptr{Cint})::Cvoid
 end
 
 function l2rt_solve_problem(data, status, m, n, power, weight, shift, x, u, v)
-    @ccall libgalahad_all.l2rt_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
-                                             m::Cint, n::Cint, power::Float64,
-                                             weight::Float64, shift::Float64,
-                                             x::Ptr{Float64}, u::Ptr{Float64},
-                                             v::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.l2rt_solve_problem(data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint},
+                                                m::Cint, n::Cint, power::Float64,
+                                                weight::Float64, shift::Float64,
+                                                x::Ptr{Float64}, u::Ptr{Float64},
+                                                v::Ptr{Float64})::Cvoid
 end
 
 function l2rt_information(data, inform, status)
-    @ccall libgalahad_all.l2rt_information(data::Ptr{Ptr{Cvoid}},
-                                           inform::Ptr{l2rt_inform_type},
-                                           status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.l2rt_information(data::Ptr{Ptr{Cvoid}},
+                                              inform::Ptr{l2rt_inform_type},
+                                              status::Ptr{Cint})::Cvoid
 end
 
 function l2rt_terminate(data, control, inform)
-    @ccall libgalahad_all.l2rt_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{l2rt_control_type},
-                                         inform::Ptr{l2rt_inform_type})::Cvoid
+    @ccall libgalahad_double.l2rt_terminate(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{l2rt_control_type},
+                                            inform::Ptr{l2rt_inform_type})::Cvoid
 end

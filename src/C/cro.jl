@@ -45,36 +45,37 @@ mutable struct cro_inform_type
 end
 
 function cro_initialize(data, control, status)
-    @ccall libgalahad_all.cro_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{cro_control_type},
-                                         status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.cro_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{cro_control_type},
+                                            status::Ptr{Cint})::Cvoid
 end
 
 function cro_read_specfile(control, specfile)
-    @ccall libgalahad_all.cro_read_specfile(control::Ptr{cro_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.cro_read_specfile(control::Ptr{cro_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
-function cro_crossover_solution(control, data, inform, n, m, m_equal, H_val, H_col, H_ptr,
-                                A_val, A_col, A_ptr, g, c_l, c_u, x_l, x_u, x, c, y, z,
-                                x_stat, c_stat)
-    @ccall libgalahad_all.cro_crossover_solution(control::Ptr{cro_control_type},
-                                                 data::Ptr{Ptr{Cvoid}},
-                                                 inform::Ptr{cro_inform_type}, n::Cint,
-                                                 m::Cint, m_equal::Cint,
-                                                 H_val::Ptr{Float64}, H_col::Ptr{Cint},
-                                                 H_ptr::Ptr{Cint}, A_val::Ptr{Float64},
-                                                 A_col::Ptr{Cint}, A_ptr::Ptr{Cint},
-                                                 g::Ptr{Float64}, c_l::Ptr{Float64},
-                                                 c_u::Ptr{Float64}, x_l::Ptr{Float64},
-                                                 x_u::Ptr{Float64}, x::Ptr{Float64},
-                                                 c::Ptr{Float64}, y::Ptr{Float64},
-                                                 z::Ptr{Float64}, x_stat::Ptr{Cint},
-                                                 c_stat::Ptr{Cint})::Cvoid
+function cro_crossover_solution(data, control, inform, n, m, m_equal, h_ne, H_val, H_col,
+                                H_ptr, a_ne, A_val, A_col, A_ptr, g, c_l, c_u, x_l, x_u, x,
+                                c, y, z, x_stat, c_stat)
+    @ccall libgalahad_double.cro_crossover_solution(data::Ptr{Ptr{Cvoid}},
+                                                    control::Ptr{cro_control_type},
+                                                    inform::Ptr{cro_inform_type}, n::Cint,
+                                                    m::Cint, m_equal::Cint, h_ne::Cint,
+                                                    H_val::Ptr{Float64}, H_col::Ptr{Cint},
+                                                    H_ptr::Ptr{Cint}, a_ne::Cint,
+                                                    A_val::Ptr{Float64}, A_col::Ptr{Cint},
+                                                    A_ptr::Ptr{Cint}, g::Ptr{Float64},
+                                                    c_l::Ptr{Float64}, c_u::Ptr{Float64},
+                                                    x_l::Ptr{Float64}, x_u::Ptr{Float64},
+                                                    x::Ptr{Float64}, c::Ptr{Float64},
+                                                    y::Ptr{Float64}, z::Ptr{Float64},
+                                                    x_stat::Ptr{Cint},
+                                                    c_stat::Ptr{Cint})::Cvoid
 end
 
 function cro_terminate(data, control, inform)
-    @ccall libgalahad_all.cro_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{cro_control_type},
-                                        inform::Ptr{cro_inform_type})::Cvoid
+    @ccall libgalahad_double.cro_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{cro_control_type},
+                                           inform::Ptr{cro_inform_type})::Cvoid
 end

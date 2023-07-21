@@ -96,12 +96,12 @@ mutable struct nls_control_type
     space_critical::Bool
     deallocate_error_fatal::Bool
     prefix::NTuple{31,Cchar}
-    subproblem_control::nls_subproblem_control_type
     rqs_control::rqs_control_type
     glrt_control::glrt_control_type
     psls_control::psls_control_type
     bsc_control::bsc_control_type
     roots_control::roots_control_type
+    subproblem_control::nls_subproblem_control_type
 end
 
 mutable struct nls_time_type
@@ -175,90 +175,95 @@ mutable struct nls_inform_type
 end
 
 function nls_initialize(data, control, inform)
-    @ccall libgalahad_all.nls_initialize(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{nls_control_type},
-                                         inform::Ptr{nls_inform_type})::Cvoid
+    @ccall libgalahad_double.nls_initialize(data::Ptr{Ptr{Cvoid}},
+                                            control::Ptr{nls_control_type},
+                                            inform::Ptr{nls_inform_type})::Cvoid
 end
 
 function nls_read_specfile(control, specfile)
-    @ccall libgalahad_all.nls_read_specfile(control::Ptr{nls_control_type},
-                                            specfile::Ptr{Cchar})::Cvoid
+    @ccall libgalahad_double.nls_read_specfile(control::Ptr{nls_control_type},
+                                               specfile::Ptr{Cchar})::Cvoid
 end
 
 function nls_import(control, data, status, n, m, J_type, J_ne, J_row, J_col, J_ptr, H_type,
                     H_ne, H_row, H_col, H_ptr, P_type, P_ne, P_row, P_col, P_ptr, w)
-    @ccall libgalahad_all.nls_import(control::Ptr{nls_control_type}, data::Ptr{Ptr{Cvoid}},
-                                     status::Ptr{Cint}, n::Cint, m::Cint,
-                                     J_type::Ptr{Cchar}, J_ne::Cint, J_row::Ptr{Cint},
-                                     J_col::Ptr{Cint}, J_ptr::Ptr{Cint}, H_type::Ptr{Cchar},
-                                     H_ne::Cint, H_row::Ptr{Cint}, H_col::Ptr{Cint},
-                                     H_ptr::Ptr{Cint}, P_type::Ptr{Cchar}, P_ne::Cint,
-                                     P_row::Ptr{Cint}, P_col::Ptr{Cint}, P_ptr::Ptr{Cint},
-                                     w::Ptr{Float64})::Cvoid
+    @ccall libgalahad_double.nls_import(control::Ptr{nls_control_type},
+                                        data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint}, n::Cint,
+                                        m::Cint, J_type::Ptr{Cchar}, J_ne::Cint,
+                                        J_row::Ptr{Cint}, J_col::Ptr{Cint},
+                                        J_ptr::Ptr{Cint}, H_type::Ptr{Cchar}, H_ne::Cint,
+                                        H_row::Ptr{Cint}, H_col::Ptr{Cint},
+                                        H_ptr::Ptr{Cint}, P_type::Ptr{Cchar}, P_ne::Cint,
+                                        P_row::Ptr{Cint}, P_col::Ptr{Cint},
+                                        P_ptr::Ptr{Cint}, w::Ptr{Float64})::Cvoid
 end
 
 function nls_reset_control(control, data, status)
-    @ccall libgalahad_all.nls_reset_control(control::Ptr{nls_control_type},
-                                            data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.nls_reset_control(control::Ptr{nls_control_type},
+                                               data::Ptr{Ptr{Cvoid}},
+                                               status::Ptr{Cint})::Cvoid
 end
 
 function nls_solve_with_mat(data, userdata, status, n, m, x, c, g, eval_c, j_ne, eval_j,
                             h_ne, eval_h, p_ne, eval_hprods)
-    @ccall libgalahad_all.nls_solve_with_mat(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
-                                             status::Ptr{Cint}, n::Cint, m::Cint,
-                                             x::Ptr{Float64}, c::Ptr{Float64},
-                                             g::Ptr{Float64}, eval_c::Ptr{Cvoid},
-                                             j_ne::Cint, eval_j::Ptr{Cvoid}, h_ne::Cint,
-                                             eval_h::Ptr{Cvoid}, p_ne::Cint,
-                                             eval_hprods::Ptr{Cvoid})::Cvoid
+    @ccall libgalahad_double.nls_solve_with_mat(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
+                                                status::Ptr{Cint}, n::Cint, m::Cint,
+                                                x::Ptr{Float64}, c::Ptr{Float64},
+                                                g::Ptr{Float64}, eval_c::Ptr{Cvoid},
+                                                j_ne::Cint, eval_j::Ptr{Cvoid}, h_ne::Cint,
+                                                eval_h::Ptr{Cvoid}, p_ne::Cint,
+                                                eval_hprods::Ptr{Cvoid})::Cvoid
 end
 
 function nls_solve_without_mat(data, userdata, status, n, m, x, c, g, eval_c, eval_jprod,
                                eval_hprod, p_ne, eval_hprods)
-    @ccall libgalahad_all.nls_solve_without_mat(data::Ptr{Ptr{Cvoid}}, userdata::Ptr{Cvoid},
-                                                status::Ptr{Cint}, n::Cint, m::Cint,
-                                                x::Ptr{Float64}, c::Ptr{Float64},
-                                                g::Ptr{Float64}, eval_c::Ptr{Cvoid},
-                                                eval_jprod::Ptr{Cvoid},
-                                                eval_hprod::Ptr{Cvoid}, p_ne::Cint,
-                                                eval_hprods::Ptr{Cvoid})::Cvoid
+    @ccall libgalahad_double.nls_solve_without_mat(data::Ptr{Ptr{Cvoid}},
+                                                   userdata::Ptr{Cvoid}, status::Ptr{Cint},
+                                                   n::Cint, m::Cint, x::Ptr{Float64},
+                                                   c::Ptr{Float64}, g::Ptr{Float64},
+                                                   eval_c::Ptr{Cvoid},
+                                                   eval_jprod::Ptr{Cvoid},
+                                                   eval_hprod::Ptr{Cvoid}, p_ne::Cint,
+                                                   eval_hprods::Ptr{Cvoid})::Cvoid
 end
 
 function nls_solve_reverse_with_mat(data, status, eval_status, n, m, x, c, g, j_ne, J_val,
                                     y, h_ne, H_val, v, p_ne, P_val)
-    @ccall libgalahad_all.nls_solve_reverse_with_mat(data::Ptr{Ptr{Cvoid}},
-                                                     status::Ptr{Cint},
-                                                     eval_status::Ptr{Cint}, n::Cint,
-                                                     m::Cint, x::Ptr{Float64},
-                                                     c::Ptr{Float64}, g::Ptr{Float64},
-                                                     j_ne::Cint, J_val::Ptr{Float64},
-                                                     y::Ptr{Float64}, h_ne::Cint,
-                                                     H_val::Ptr{Float64}, v::Ptr{Float64},
-                                                     p_ne::Cint,
-                                                     P_val::Ptr{Float64})::Cvoid
-end
-
-function nls_solve_reverse_without_mat(data, status, eval_status, n, m, x, c, g, transpose,
-                                       u, v, y, p_ne, P_val)
-    @ccall libgalahad_all.nls_solve_reverse_without_mat(data::Ptr{Ptr{Cvoid}},
+    @ccall libgalahad_double.nls_solve_reverse_with_mat(data::Ptr{Ptr{Cvoid}},
                                                         status::Ptr{Cint},
                                                         eval_status::Ptr{Cint}, n::Cint,
                                                         m::Cint, x::Ptr{Float64},
                                                         c::Ptr{Float64}, g::Ptr{Float64},
-                                                        transpose::Ptr{Bool},
-                                                        u::Ptr{Float64}, v::Ptr{Float64},
-                                                        y::Ptr{Float64}, p_ne::Cint,
+                                                        j_ne::Cint, J_val::Ptr{Float64},
+                                                        y::Ptr{Float64}, h_ne::Cint,
+                                                        H_val::Ptr{Float64},
+                                                        v::Ptr{Float64}, p_ne::Cint,
                                                         P_val::Ptr{Float64})::Cvoid
 end
 
+function nls_solve_reverse_without_mat(data, status, eval_status, n, m, x, c, g, transpose,
+                                       u, v, y, p_ne, P_val)
+    @ccall libgalahad_double.nls_solve_reverse_without_mat(data::Ptr{Ptr{Cvoid}},
+                                                           status::Ptr{Cint},
+                                                           eval_status::Ptr{Cint}, n::Cint,
+                                                           m::Cint, x::Ptr{Float64},
+                                                           c::Ptr{Float64},
+                                                           g::Ptr{Float64},
+                                                           transpose::Ptr{Bool},
+                                                           u::Ptr{Float64},
+                                                           v::Ptr{Float64},
+                                                           y::Ptr{Float64}, p_ne::Cint,
+                                                           P_val::Ptr{Float64})::Cvoid
+end
+
 function nls_information(data, inform, status)
-    @ccall libgalahad_all.nls_information(data::Ptr{Ptr{Cvoid}},
-                                          inform::Ptr{nls_inform_type},
-                                          status::Ptr{Cint})::Cvoid
+    @ccall libgalahad_double.nls_information(data::Ptr{Ptr{Cvoid}},
+                                             inform::Ptr{nls_inform_type},
+                                             status::Ptr{Cint})::Cvoid
 end
 
 function nls_terminate(data, control, inform)
-    @ccall libgalahad_all.nls_terminate(data::Ptr{Ptr{Cvoid}},
-                                        control::Ptr{nls_control_type},
-                                        inform::Ptr{nls_inform_type})::Cvoid
+    @ccall libgalahad_double.nls_terminate(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{nls_control_type},
+                                           inform::Ptr{nls_inform_type})::Cvoid
 end

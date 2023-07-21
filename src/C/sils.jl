@@ -89,37 +89,37 @@ mutable struct sils_sinfo_type
 end
 
 function sils_initialize(data, control, status)
-    @ccall libgalahad_all.sils_initialize(data::Ptr{Ptr{Cvoid}},
-                                          control::Ptr{sils_control_type},
-                                          status::Ptr{Cint})::Cvoid
-end
-
-function sils_read_specfile(control, specfile)
-    @ccall libgalahad_all.sils_read_specfile(control::Ptr{sils_control_type},
-                                             specfile::Ptr{Cchar})::Cvoid
-end
-
-function sils_import(control, data, status)
-    @ccall libgalahad_all.sils_import(control::Ptr{sils_control_type},
-                                      data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
-end
-
-function sils_reset_control(control, data, status)
-    @ccall libgalahad_all.sils_reset_control(control::Ptr{sils_control_type},
-                                             data::Ptr{Ptr{Cvoid}},
+    @ccall libgalahad_double.sils_initialize(data::Ptr{Ptr{Cvoid}},
+                                             control::Ptr{sils_control_type},
                                              status::Ptr{Cint})::Cvoid
 end
 
-function sils_information(data, ainfo, finfo, sinfo, status)
-    @ccall libgalahad_all.sils_information(data::Ptr{Ptr{Cvoid}},
-                                           ainfo::Ptr{sils_ainfo_type},
-                                           finfo::Ptr{sils_finfo_type},
-                                           sinfo::Ptr{sils_sinfo_type},
-                                           status::Ptr{Cint})::Cvoid
+function sils_read_specfile(control, specfile)
+    @ccall libgalahad_double.sils_read_specfile(control::Ptr{sils_control_type},
+                                                specfile::Ptr{Cchar})::Cvoid
 end
 
-function sils_terminate(data, control, status)
-    @ccall libgalahad_all.sils_terminate(data::Ptr{Ptr{Cvoid}},
-                                         control::Ptr{sils_control_type},
-                                         status::Ptr{Cint})::Cvoid
+function sils_import(control, data, status)
+    @ccall libgalahad_double.sils_import(control::Ptr{sils_control_type},
+                                         data::Ptr{Ptr{Cvoid}}, status::Ptr{Cint})::Cvoid
+end
+
+function sils_reset_control(control, data, status)
+    @ccall libgalahad_double.sils_reset_control(control::Ptr{sils_control_type},
+                                                data::Ptr{Ptr{Cvoid}},
+                                                status::Ptr{Cint})::Cvoid
+end
+
+function sils_information(data, ainfo, finfo, sinfo, status)
+    @ccall libgalahad_double.sils_information(data::Ptr{Ptr{Cvoid}},
+                                              ainfo::Ptr{sils_ainfo_type},
+                                              finfo::Ptr{sils_finfo_type},
+                                              sinfo::Ptr{sils_sinfo_type},
+                                              status::Ptr{Cint})::Cvoid
+end
+
+function sils_finalize(data, control, status)
+    @ccall libgalahad_double.sils_finalize(data::Ptr{Ptr{Cvoid}},
+                                           control::Ptr{sils_control_type},
+                                           status::Ptr{Cint})::Cvoid
 end
